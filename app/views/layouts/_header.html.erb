@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-light pt-3 pb-3 text-center">
+   <div class="collapse navbar-collapse">
+     <div class="navber navber-brand col-md-4"><%= link_to 'ロゴ', root_path %></div>
+      <ul class="navbar-nav mx-auto">
+         <% if customer_signed_in? %>
+         <h3>ようこそ<%= current_customer.last_name %>さん</h3>
+          <li class="nav-item ml-5">
+            <%= link_to "マイページ",customers_mypage_path ,class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+           <%= link_to "商品一覧",items_path ,class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "カート",cart_items_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ログアウト",destroy_customer_session_path, method: :delete, class: "nav-link" %>
+          </li>
+         <% elsif admin_signed_in? %>
+          <h3>管理者ログイン中</h3>
+          <li class="nav-item ml-5">
+           <%= link_to "商品一覧",admin_items_path ,class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+           <%= link_to "会員一覧",admin_customers_path ,class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+           <%= link_to "注文履歴一覧",admin_path ,class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ジャンル一覧",admin_genres_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ログアウト",destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          </li>
+         <% else %>
+          <li class="nav-item ml-5">
+            <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "商品一覧",items_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "新規登録",new_customer_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ログイン",new_customer_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "管理者ログイン",new_admin_session_path, class: "nav-link" %>
+          </li>
+         <% end %>
+      </ul>
+    </div>
+  </nav>
