@@ -3,15 +3,26 @@
     <div class="col-md-2 mx-auto">
      <%= render 'list_search', genres: @genres %>
     </div>
-    <div class="col-md-10">
-     <%#= image_tag '〇〇.jpg', size: '400x200' %>
-     <p>ようこそ、ながのcakeへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
-     <!--render-->
-     <h3>新着商品</h3>
-     <% @items.each do |f| %>
-      <%= f.name %>
-      ￥<%= f.price_without_tax.to_s(:delimited) %>
-     <% end %>
+    <div class="col-md-10 backimage-text">
+     <div class="backimage"><%= image_tag 'イメージ.jpg', size: '800x400' %>
+      <div  class="text">
+        <p class="">ようこそ、ながのcakeへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
+      </div>
+     </div>
+     <div class="mt-5">
+       <h3><strong>新着商品</strong></h3>
+       <div class="mt-5">
+        <% @items.each do |f| %>
+          <p>
+            <%= link_to item_path(f) do %>
+             <%= image_tag f.get_image(200,200) %>
+            <% end %>
+          </p>
+          <p><strong><%= f.name %></strong></p>
+          <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
+        <% end %>
+       </div>
+     </div>
     </div>
   </div>
 </div>
