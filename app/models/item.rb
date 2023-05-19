@@ -22,4 +22,18 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  ## 消費税を求めるメソッド
+  def with_tax_price
+    (price_without_tax * 1.1).floor
+  end
+
+  ## 販売ステータスを日本語で表示するためのメソッド
+  def sale_status
+    if is_on_sale == true
+      "販売中"
+    else
+      "売切れ"
+    end
+  end
+
 end

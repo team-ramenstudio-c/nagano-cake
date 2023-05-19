@@ -1,0 +1,9 @@
+<% items.each do |f| %>
+  <p>
+    <%= link_to item_path(f) do %>
+     <%= image_tag f.get_image(200,200), class: "image" %>
+    <% end %>
+  </p>
+  <p><strong><%= f.name %></strong>（<%= f.sale_status %>）</p>
+  <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
+<% end %>

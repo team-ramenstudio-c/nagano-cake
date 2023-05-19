@@ -4,7 +4,7 @@
      <%= render 'list_search', genres: @genres %>
     </div>
     <div class="col-md-10 backimage-text">
-     <div class="backimage"><%= image_tag 'イメージ.jpg', size: '800x400' %>
+     <div class="backimage"><%= image_tag 'イメージ.jpg', size: '800x400', class: "image" %>
       <div  class="text">
         <p class="">ようこそ、ながのcakeへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
       </div>
@@ -12,17 +12,10 @@
      <div class="mt-5">
        <h3><strong>新着商品</strong></h3>
        <div class="mt-5">
-        <% @items.each do |f| %>
-          <p>
-            <%= link_to item_path(f) do %>
-             <%= image_tag f.get_image(200,200) %>
-            <% end %>
-          </p>
-          <p><strong><%= f.name %></strong></p>
-          <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
-        <% end %>
+        <%= render 'public/items/index', items: @items %>
        </div>
      </div>
     </div>
+    <p class="text-center"><%= link_to 'すべての商品を見る', items_path, class: "item-index" %></p>
   </div>
 </div>

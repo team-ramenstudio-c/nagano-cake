@@ -3,20 +3,10 @@
     <div class="col-md-2">
       <%= render 'public/homes/list_search', genres: @genres %>
     </div>
-    <div class="col-md-10 text-center">
-      <h2><%= @genre.name %>ジャンルの一覧</h2>
-      <p><%= @items.count %>件の商品がヒットしました。</p>
-
-      <% @items.each do |f| %>
-       <%= f.name %>
-       ￥<%= f.price_without_tax.to_s(:delimited) %>
-       <% if f.is_on_sale == true %>
-        販売中
-       <% else %>
-        売切れ
-       <% end %>
-      <% end %>
-
+    <div class="col-md-10">
+      <h2 class="text-center">ジャンル名（<%= @genre.name %>）の一覧</h2>
+      <p  class="text-center mb-3"><strong><%= @items.count %>件</strong>の商品がヒットしました。</p>
+      <%= render 'index', items: @items %>
     </div>
   </div>
 </div>
