@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-　#カート商品（中間テーブル）とのアソシ
+#カート商品（中間テーブル）とのアソシ
   has_many :cart_items, dependent: :destroy
 
   #注文・注文商品とのアソシ

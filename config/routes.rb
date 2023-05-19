@@ -11,6 +11,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+devise_scope :admin do
+    get '/admin/sign_out' => 'admin/sessions#destroy'
+  end
+
 # 会員側のルーティング設定
 scope module: :public do
   # homes

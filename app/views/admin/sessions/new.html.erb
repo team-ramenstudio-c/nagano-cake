@@ -1,26 +1,30 @@
-<h2>Log in</h2>
+<div class= 'container'>
+  <div class='row'>
+  <div class="col-8 mt-3 mx-auto p-3" style="background-color: #ffffe0; color: #696969;">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<h2 class="text-center">管理者ログイン</h2>
+
+<!--session_pathの後の(resource_name)を消したらActionController::UnknownFormat inエラー解消-->
+<%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
+  <div class="form-group row mt-3">
+   <%= f.label "メールアドレス",class:"col-3 col-form-label" %>
+   <div class="col-8">
+   <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+   </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="form-group row mt-3">
+    <%= f.label "パスワード" ,class:"col-3 col-form-label"%>
+    <div class="col-8">
+    <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  </div>
+  <div class="text-right mt-3">
+    <%= f.submit "ログイン" ,class: "btn btn-sm btn-primary my-3 w-25"%>
   </div>
 <% end %>
 
 <%= render "admin/shared/links" %>
+  </div>
+ </div>
+</div>
