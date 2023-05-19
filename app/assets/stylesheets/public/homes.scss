@@ -1,3 +1,19 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.about {
+ flex-direction: column
+}
+
+.about h1 {
+  font-size: 70px;
+}
+
+.about p {
+  font-size: 20px;
+}
+
+.genre-search {
+  text-decoration: none;
+  color: gray;
+}
