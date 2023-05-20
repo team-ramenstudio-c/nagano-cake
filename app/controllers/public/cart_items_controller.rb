@@ -3,6 +3,8 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items.all
+    #合計金額算出
+    @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def create
@@ -15,9 +17,9 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
-      render 'index'
+      redirect_to cart_items_path
     else
-      render 'index'
+      redirect_to request.referer
     end
   end
 

@@ -4,3 +4,16 @@
 .head-items {
   justify-content: space-between;
 }
+
+.row-content {
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.row-content-middle {
+  justify-content: space-around
+}
+
+.change_button {
+  margin-left: 20px;
+}
