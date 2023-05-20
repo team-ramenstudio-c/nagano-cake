@@ -1,43 +1,69 @@
 <div class="container">
- <div class="row">
-  <div class="mt-3 containt-center">
+  <div class="col-10 mx-auto mt-5">
+    <div class="row">
 
-  <h2>商品新規登録</h2>
+
+    <div class="form d-flex justify-content-center">
+    <%= form_with model: @item, url:admin_items_path, method: :post do |f|  %>
+
+    <div class="row">
+    <h2>商品新規登録</h2>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :image,"商品画像",class:"col-4 col-form-label"%>
+    <div class="col-6">
+     <%= f.file_field :image,accept: "image/*" %>
+    </div>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :name,"商品名",class:"col-4 col-form-label"%>
+     <div class="col-6">
+     <%= f.text_field :name, autofocus: true, placeholder:"商品名",class:"form-control" %>
+    </div>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :description,"商品説明",class:"col-4 col-form-label"%>
+    <div class="col-6">
+     <%= f.text_area :description, placeholder:"ここに説明文を記述します",rows:"5",class:"form-control"%>
+    </div>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :genre_id,"ジャンル", class:"col-4 col-form-label" %>
+    <div class="col-6">
+     <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :price_without_tax,"税抜価格",class:"col-4 col-form-label"%>
+    <div class="col-6">
+     <!--pattern: 入力制限-->
+     <%= f.text_field :price_without_tax, pattern:"^[1-9][0-9]*$",placeholder:"1000(半角数字を入力)",class:"form-control" %>
+    </div>
+    </div>
+
+    <div class="form-group row mt-3">
+     <%= f.label :is_on_sale,"販売ステータス",class:"col-4 col-form-label" %>
+    <div class="col-6">
+     <%= f.radio_button :is_on_sale, :true,class:"form-check-input" %>
+     <%= f.label :is_on_sale, "販売中",class:"form-check-label" %>
+     <%= f.radio_button :is_on_sale, :false,class:"form-check-input" %>
+     <%= f.label :is_on_sale, "販売停止中",class:"form-check-label" %>
+    </div>
+    </div>
+
+    <div class="raw text-center mt-3">
+     <%= f.submit "新規登録", class:"btn btn-success w-25"%>
+    </div>
+
+   </div>
   
+    <% end %>
   
-  <%= form_with model: @item, url:admin_items_path, method: :post do |f|  %>
-  
-  <div class="form">
-  <%= f.label :description,"商品画像"%>
-  <%= f.file_field :item_image,accept: "image/*" %></br>
-
-
-  <%= f.label :name,"商品名"%>
-  <%= f.text_field :name %></br>
-
-  <%= f.label :description,"商品説明"%>
-  <%= f.text_area :description %></br>
-
-  <%= f.label :genre_id,"ジャンル"%>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name%></br>
-
-
-  <%= f.label :price_without_tax,"税込価格"%>
-  <%= f.text_field :price_without_tax%></br>
-
-  <%= f.label :is_on_sale,"販売ステータス"%>
-  <%= f.radio_button :is_on_sale, :true %>
-  <%= f.label :is_on_sale, "販売中"%>
-  <%= f.radio_button :is_on_sale, :false %>
-  <%= f.label :is_on_sale, "販売停止中"%>
-  </div>
-
-  <div class="raw text-center">
-  <%= f.submit "新規登録", class:"btn btn-success w-25"%>
-  </div>
-  
-  <% end %>
-  
-  </div>
+   </div>
   </div>
 </div>

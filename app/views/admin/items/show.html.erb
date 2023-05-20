@@ -1,9 +1,50 @@
 <div class="container">
- <div class="row">
-  <div class="mt-3 containt-center">
+  <div class="col-10 mx-auto mt-5">
 
+    <div class="row mb-5">
     <h2>商品詳細</h2>
-    <%= image_tag @item.get_image %>
+    </div>
+
+    <div class="row">
+    <div class="col-5 d-flex justify-content-center">
+    <%= image_tag @item.get_image(300,200) %>
+    </div>
+
+    <div class="col-5 d-flex justify-content-center">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.description %></td>
+      </tr>
+         <td> 税込価格 </br>
+             (税抜価格)
+         </td>
+         <td>
+             &yen;<%= @item.with_tax_price %>
+             (<%= @item.price_without_tax %>)
+         </td>
+      <tr>
+         <td>販売ステータス</td>
+         <td><%= @item.sale_status %></td>
+      </tr>
+     </tbody>
+    </table>
+    </div>
+
+      <div class="offset-5 mt-3">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn w-25 btn-success" %>
+      </div>
 
 
   </div>
