@@ -1,2 +1,43 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+ <div class="row">
+  <div class="mt-3 containt-center">
+
+  <h2>商品新規登録</h2>
+  
+  
+  <%= form_with model: @item, url:admin_items_path, method: :post do |f|  %>
+  
+  <div class="form">
+  <%= f.label :description,"商品画像"%>
+  <%= f.file_field :item_image,accept: "image/*" %></br>
+
+
+  <%= f.label :name,"商品名"%>
+  <%= f.text_field :name %></br>
+
+  <%= f.label :description,"商品説明"%>
+  <%= f.text_area :description %></br>
+
+  <%= f.label :genre_id,"ジャンル"%>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name%></br>
+
+
+  <%= f.label :price_without_tax,"税込価格"%>
+  <%= f.text_field :price_without_tax%></br>
+
+  <%= f.label :is_on_sale,"販売ステータス"%>
+  <%= f.radio_button :is_on_sale, :true %>
+  <%= f.label :is_on_sale, "販売中"%>
+  <%= f.radio_button :is_on_sale, :false %>
+  <%= f.label :is_on_sale, "販売停止中"%>
+  </div>
+
+  <div class="raw text-center">
+  <%= f.submit "新規登録", class:"btn btn-success w-25"%>
+  </div>
+  
+  <% end %>
+  
+  </div>
+  </div>
+</div>
