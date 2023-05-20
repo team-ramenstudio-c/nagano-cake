@@ -1,2 +1,29 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5 ">
+  <div class="row">
+    <div class="col-md-2 mx-auto">
+     <%= render 'public/homes/list_search', genres: @genres %>
+    </div>
+    <div class="col-md-10 d-flex ">
+     <div><%= image_tag @item.get_image(400,400), class: "image" %></div>
+     <div class="item">
+       <h1><strong><%= @item.name %></strong></h1>
+       <p class="mt-5"><%= @item.description %></p>
+       <h4 class="price mb-5"><strong>￥<%= @item.with_tax_price.to_s(:delimited) %></strong><span>（税込）</span></h4>
+       <% if @item.is_on_sale == true %>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+         <div class="d-flex">
+          <%= f.select :quantity, [[1,1], [2,2], [3,3], [4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10]], { include_blank: '個数選択' }, class: "form-select" %>
+          <% if customer_signed_in? %>
+           <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <% end %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit 'カートに入れる', class: "btn btn-success ms-4" %>
+         </div>
+        <% end %>
+       <% else %>
+        <h5 class="text-danger">こちらの商品は売切れのため購入できません</h5>
+       <% end %>
+     </div>
+    </div>
+  </div>
+</div>
