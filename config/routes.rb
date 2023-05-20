@@ -20,6 +20,7 @@ scope module: :public do
   # homes
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  get 'items/:id/genre_search' => 'items#genre_search', as: 'genre_search'
   # items
   resources :items, only: [:index, :show]
   # customers
