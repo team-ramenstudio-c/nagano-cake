@@ -14,7 +14,9 @@ class Public::CartItemsController < ApplicationController
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.save
-      redirect_to cart_items_path, notice: 'カートに商品が追加されました'
+      redirect_to cart_items_path, notice: '選択された個数分を追加しました'
+    elsif @cart_item.quantity.nil?
+        redirect_to request.referer, notice: '個数を選択してください'
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
       redirect_to cart_items_path, notice: 'カートに商品が追加されました'
@@ -26,7 +28,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to request.referer, notice: '情報更新が更新されました'
+    # redirect_to request.referer, notice: '情報更新が更新されました'
   end
 
   def destroy

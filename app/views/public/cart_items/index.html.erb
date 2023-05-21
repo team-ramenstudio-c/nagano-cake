@@ -17,18 +17,15 @@
       </thead>
       <tbody>
         <% @cart_items.each do |cart_item| %>
-          <tr>
+          <tr id="cart_item">
             <td class="align-middle"><%= image_tag cart_item.item.get_image(100, 100), class: "p-2" %> <%= cart_item.item.name %></td>
             <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td class="align-middle">
-              <%= form_with(model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true, class: "text-center") do |form| %>
-                <%= form.hidden_field :customer_id, :value => current_customer.id %>
-                <%= form.hidden_field :item_id, :value => cart_item.item.id %>
-                <%= form.select :quantity, *[1..50],{}, class: "form-select-sm" %>
-                <%= form.submit "変更", class: "btn btn-success change_button" %>
-              <% end %>
+            <td id="select-form" class="align-middle">
+              <%= render 'select', cart_item: cart_item %>
             </td>
-            <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
+            <td class="align-middle subtotal-area">
+              <%= render 'subtotal', cart_item: cart_item %>
+            </td>
             <td class="align-middle text-center"><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
@@ -45,7 +42,9 @@
        <tbody>
          <tr>
            <th class="bg-light p-2">合計金額</th>
-           <td><%= @total_amount.to_s(:delimited) %></td>
+           <td class="total-area">
+             <%= render 'total', total_amount: @total_amount %>
+            </td>
          </tr>
        </tbody>
      </table>
