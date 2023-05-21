@@ -29,6 +29,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.update(cart_item_params)
     # redirect_to request.referer, notice: '情報更新が更新されました'
+     @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def destroy
