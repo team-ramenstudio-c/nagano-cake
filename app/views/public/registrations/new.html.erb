@@ -7,75 +7,74 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="form-group row mt-3">
-    <%= f.label :名前 %>
-    <%= f.label :（姓）,class:"col-md-2 col-form-label" %>
-    <div class="col-4">
+  <div class="form-group row d-flex mt-3">
+    <%= f.label :名前,class:"col-md-2 col-form-label" %>
+    <%= f.label :（姓）,class:"col-md-1 col-form-label" %>
+    <div class="col-md-4">
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",class:"form-control" %>
     </div>
-    <%= f.label :（名）,class:"col-md-2 col-form-label" %>
-    <div class="col-4">
+    <%= f.label :（名）,class:"col-md-1 col-form-label" %>
+    <div class="col-md-4">
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",class:"form-control" %>
+
     </div>
   </div>
 
-  <div class="form-group row mt-3">
-    <%= f.label :フリガナ %>
-
-        <%= f.label :（セイ）,class:"col-md-2 col-form-label" %>
+  <div class="form-group row d-flex mt-3">
+    <%= f.label :フリガナ,class:"col-md-2 col-form-label" %>
+        <%= f.label :（セイ）,class:"col-md-1 col-form-label" %>
       <div class="col-md-4">
         <%= f.text_field :furigana_last_name, autofocus: true, autocomplete: "furigana_last_name",class:"form-control" %>
       </div>
-      <%= f.label :（メイ）,class:"col-md-2 col-form-label" %>
+      <%= f.label :（メイ）,class:"col-md-1 col-form-label" %>
       <div class="col-md-4">
         <%= f.text_field :furigana_first_name, autofocus: true, autocomplete: "furigana_first_name",class:"form-control" %>
-      </div>
-
+    </div>
   </div>
 
   <div class="form-group row mt-3">
-      <%= f.label :メールアドレス,class:"col-md-2 col-form-label" %>
-    <div class="col-md-10">
+      <%= f.label :メールアドレス,class:"col-md-3 col-form-label" %>
+    <div class="col-md-4">
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row mt-3">
-    <%= f.label :郵便番号（ハイフンなし）,class:"col-md-2 col-form-label" %>
-    <div class="col-md-10">
+    <%= f.label :郵便番号（ハイフンなし）,class:"col-md-3 col-form-label" %>
+    <div class="col-md-4">
       <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code",class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row mt-3">
-    <%= f.label :住所,class:"col-md-2 col-form-label" %>
-    <div class="col-md-10">
+    <%= f.label :住所,class:"col-md-3 col-form-label" %>
+    <div class="col-md-9">
       <%= f.text_field :address, autofocus: true, autocomplete: "address",class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row mt-3">
-    <%= f.label :電話番号（ハイフンなし）,class:"col-md-2 col-form-label" %>
-    <div class="col-md-10">
+    <%= f.label :電話番号（ハイフンなし）,class:"col-md-3 col-form-label" %>
+    <div class="col-md-4">
       <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number",class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row mt-3">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <%= f.label :パスワード,class:"form-label" %>
       <% if @minimum_password_length %>
       (<%= @minimum_password_length %> 文字以上)
       <% end %>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-4">
       <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row mt-3">
-    <%= f.label :パスワード（確認用）,class:"col-md-2 col-form-label" %>
-    <div class="col-md-10">
+    <%= f.label :パスワード（確認用）,class:"col-md-3 col-form-label" %>
+    <div class="col-md-4">
       <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
     </div>
   </div>
