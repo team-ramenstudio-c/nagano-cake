@@ -1,2 +1,54 @@
-<h1>Public::ShippingAddresses#index</h1>
-<p>Find me in app/views/public/shipping_addresses/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>配送先登録/一覧</h1>
+
+    <div class="form-group row mt-3" >
+
+     <%= form_with model: @shipping_address, url: shipping_addresses_path do |f| %>
+        <div class="form-group mt-3 row">
+          <label class="col-md-3">郵便番号（ハイフンなし）</label>
+          <div class="col-md-3">
+            <%= f.text_field :postal_code, class:"form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+          <label class="col-md-3">住所</label>
+          <div class="col-md-6">
+            <%= f.text_field :address , class:"form-control" %>
+          </div>
+        </div>
+
+
+        <div class="form-group row mt-3" >
+          <label class="col-md-3">宛名</label>
+          <div class="col-md-9 d-flex justify-content-between">
+            <div class="col-md-4">
+              <%= f.text_field :name ,class:"form-control" %>
+            </div>
+            <%= f.submit '新規登録', class:"btn btn-success col-md-3 text-right" %>
+          </div>
+      　</div>
+    <% end %>
+
+    <div class="row mt-3">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th colspan="3"></th>
+        </thead>
+        <tbody>
+          <% @shipping_addresses.each do |shipping_addresses| %>
+            <tr>
+              <td><%= shipping_addresses.postal_code %></td>
+              <td><%= shipping_addresses.address %></td>
+              <td><%= shipping_addresses.name %></td>
+              <td><%= link_to "編集する", edit_shipping_address_path(shipping_addresses.id), :class => "btn btn-success ms-3" %></td>
+              <td><%= link_to "削除する", shipping_address_path(shipping_addresses.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :class => "btn btn-danger ms-3" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
