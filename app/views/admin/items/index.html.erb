@@ -1,0 +1,54 @@
+<div class= 'container'>
+<div class="col-md-10 mx-auto mt-5">
+ <div>
+
+<div class="row">
+ <h2>商品一覧</h2>
+</div>
+
+   <div class="d-flex justify-content-end mb-3">
+  <%= link_to new_admin_item_path do %>
+  <i class="fas fa-plus-circle"></i>
+  <% end %>
+   </div>
+
+  <table class ="table">
+      <thead class="table-light">
+        <tr align="center">
+         <th scope="col" style="width: 10%">商品ID</th>
+         <th scope="col" style="width: 40%">商品名</th>
+         <th scope="col" style="width: 15%">税抜価格</th>
+         <th scope="col" style="width: 20%">ジャンル</th>
+         <th scope="col" style="width: 15%">ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item|%>
+        <tr align="center">
+        <td><%= item.id %></td>
+        <td>
+          <%= link_to admin_item_path(item.id) do%>
+          <%= item.name %>
+          <% end %>
+        </td>
+
+        <td>&yen;<%= item.price_without_tax %></td>
+        <td><%= item.genre.name%></td>
+
+        <td><% if item.is_on_sale == true %>
+            <strong style="color:green;"><%= "販売中" %></strong>
+            <% else %>
+            <span style="color:red;"><%= "停止中" %></span>
+            <% end %>
+        </td>
+       </tr>
+       <% end %>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center mt-4">
+    <%= paginate @items %>
+    </div>
+     </div>
+  </div>
+</div>
