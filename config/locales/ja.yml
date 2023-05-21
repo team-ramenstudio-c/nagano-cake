@@ -25,3 +25,24 @@ ja:
     waiting_for_production: "制作待ち"
     in_production: "制作中"
     completion_of_production: "制作完了"
+
+# sign_up
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            last_name:
+              blank: "姓を入力してください"
+            first_name:
+              blank: "名を入力してください"
+            furigana_last_name:
+              blank: "フリガナ（姓）を入力してください"
+            furigana_first_name:
+              blank: "フリガナ（名）を入力してください"
+            post_code:
+              blank: "郵便番号を入力してください"
+            address:
+              blank: "住所を入力してください"
+            telephone_number:
+              blank: "電話番号を入力してください"
