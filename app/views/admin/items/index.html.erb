@@ -35,7 +35,12 @@
         <td>&yen;<%= item.price_without_tax %></td>
         <td><%= item.genre.name%></td>
 
-        <td><%= item.admin_sale_status %></td>
+        <td><% if item.is_on_sale == true %>
+            <strong style="color:green;"><%= "販売中" %></strong>
+            <% else %>
+            <span style="color:red;"><%= "停止中" %></span>
+            <% end %>
+        </td>
        </tr>
        <% end %>
       </tbody>
