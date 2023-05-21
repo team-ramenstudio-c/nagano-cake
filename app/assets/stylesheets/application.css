@@ -23,3 +23,12 @@
  main {
     height: 100vh;
  }
+
+.fa-plus-circle{
+   font-size: 1.8em;
+   color:#d2b48c;
+}
+
+.fa-plus-circle:hover {
+  opacity: .6;
+}
