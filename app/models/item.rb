@@ -36,12 +36,4 @@ class Item < ApplicationRecord
     end
   end
 
-  def admin_sale_status
-    if is_on_sale == true
-      "販売中"
-    else
-      "停止中"
-    end
-  end
-
 end
