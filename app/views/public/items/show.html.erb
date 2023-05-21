@@ -1,8 +1,10 @@
 <div class="container mt-5 ">
   <div class="row">
+
     <div class="col-md-2 mx-auto">
      <%= render 'public/homes/list_search', genres: @genres %>
     </div>
+
     <div class="col-md-10 d-flex ">
      <div><%= image_tag @item.get_image(400,400), class: "image" %></div>
      <div class="item">
@@ -12,7 +14,7 @@
        <% if @item.is_on_sale == true %>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
          <div class="d-flex">
-          <%= f.select :quantity, [[1,1], [2,2], [3,3], [4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10]], { include_blank: '個数選択' }, class: "form-select" %>
+          <%= f.select :quantity, *[1..50], { include_blank: '個数選択' }, class: "form-select" %>
           <% if customer_signed_in? %>
            <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <% end %>
@@ -25,5 +27,6 @@
        <% end %>
      </div>
     </div>
+
   </div>
 </div>

@@ -1,3 +1,19 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.head-items {
+  justify-content: space-between;
+}
+
+.row-content {
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.row-content-middle {
+  justify-content: space-around
+}
+
+.change_button {
+  margin-left: 20px;
+}
