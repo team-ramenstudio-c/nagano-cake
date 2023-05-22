@@ -5,16 +5,8 @@
     </div>
     <div class="col-md-10 backimage-text">
        <h3><strong>商品一覧 (全<%= @items.count %>件)</strong></h3>
-       <div class="mt-5">
-        <% @items.each do |f| %>
-          <p>
-            <%= link_to item_path(f) do %>
-             <%= image_tag f.get_image(200,200), class: "image" %>
-            <% end %>
-          </p>
-          <p><strong><%= f.name %></strong></p>
-          <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
-        <% end %>
+       <div class="row mt-4">
+        <%= render 'index', items: @items %>
         <div class="text-center"><%= paginate @items %></div>
        </div>
     </div>
