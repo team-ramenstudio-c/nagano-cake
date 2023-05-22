@@ -2,9 +2,9 @@ class Public::ItemsController < ApplicationController
   before_action :all_genre
 
   def index
-    @items = Item.all.page(params[:page]).per(8)
     @q = Item.ransack(params[:q])
     @item = @q.result
+    @items = Item.all.page(params[:page]).per(8).order(created_at: :DESC)
   end
 
   def show
@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
 
   def genre_search
     @genre = Genre.find(params[:id])
-    @items = @genre.items
+    @items = @genre.items.order(created_at: :DESC)
   end
 
   private

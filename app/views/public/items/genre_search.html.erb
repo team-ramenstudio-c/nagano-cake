@@ -6,7 +6,10 @@
     <div class="col-md-10">
       <h2 class="text-center">ジャンル名（<%= @genre.name %>）の一覧</h2>
       <p  class="text-center mb-3"><strong><%= @items.count %>件</strong>の商品がヒットしました。</p>
-      <%= render 'index', items: @items %>
+      <div class="row">
+       <%= render 'index', items: @items %>
+      </div>
+
     </div>
   </div>
 </div>

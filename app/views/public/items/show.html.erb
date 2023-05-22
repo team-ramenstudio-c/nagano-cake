@@ -14,7 +14,7 @@
        <% if @item.is_on_sale == true %>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
          <div class="d-flex">
-          <%= f.select :quantity, *[1..50], { include_blank: '個数選択' }, class: "form-select" %>
+          <%= f.select :quantity, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
           <% if customer_signed_in? %>
            <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <% end %>
