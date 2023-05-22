@@ -2,8 +2,14 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @order = Order.new
-    @shipping_address = ShippingAddress.all
+    cart_items = current_customer.cart_items
+    if cart_items.present?
+      @order = Order.new
+      @shipping_address = ShippingAddress.all
+    else
+      flash[:notice] = "カートが空です"
+      redirect_to request.referer
+    end
   end
 
   def confirm
@@ -19,14 +25,14 @@ class Public::OrdersController < ApplicationController
       @order.shipping_address = current_customer.address
       @order.shipping_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      if ShippingAddress.exists?(name: params[:order][:shipping_address_id])
-        @address = ShippingAddress.find(params[:order][:shipping_address_id])
+      if ShippingAddress.exists?(id: params[:order][:address_id])
+        @address = ShippingAddress.find(params[:order][:address_id])
         @order.shipping_name = @address.name
         @order.shipping_post_code = @address.postal_code
         @order.shipping_address = @address.address
       else
-       flash[:notice] = "配送先情報がありません"
-       render 'new'
+        flash[:notice] = "配送先情報がありません"
+        render 'new'
       end
     elsif params[:order][:select_address] == "2"
       @order.shipping_name = params[:order][:shipping_name]
@@ -41,16 +47,27 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items
+    @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @order.postage = 800
+    @order.billing_amount = @total_amount + @order.postage.to_i
+
     if @order.save
-      current.cusomer.cart_items.each do |cart_item|
+      current_customer.cart_items.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.item_id = cart_item.item_id
         @order_item.order_id = @order.id
-        # @order_item.price_including_tax = cart_item.
-        @order_item.quantity = cart_item.item.quantity
-        @order_item.roduction_status = 0
+        @order_item.price_including_tax = cart_item.subtotal
+        @order_item.quantity = cart_item.quantity
+        @order_item.production_status = 0
+        @order_item.save
       end
+      current_customer.cart_items.destroy_all
+      redirect_to completed_orders_path
     else
+      flash[:notice] = "注文ができませんでした"
+      @order = Order.new(order_params)
+      render 'new'
     end
   end
 
@@ -58,9 +75,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all.page(params[:page]).per(5).order(created_at: :DESC)
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
+    @order_items = @order.order_items.all
   end
 
   private
@@ -68,4 +88,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :postage, :billing_amount, :status, :payment_method, :shipping_name, :shipping_post_code, :shipping_address)
   end
+
 end

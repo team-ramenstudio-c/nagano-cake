@@ -1,2 +1,46 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="container">
+  <div class="row text-center order-new-title mt-5">
+    <div class="col-md-2 bg-light">
+      <h4>注文履歴一覧</h4>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+     <div class="col">
+      <table class="table table-hover table-inverse table-bordered border border-dark">
+        <thead class="bg-light">
+  　　    　　 <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払い金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+           </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr id="cart_item">
+            <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+            <td class="align-middle">〒<%= order.shipping_post_code %><%= order.shipping_address %>""<%= order.shipping_name %></td>
+            <td class="align-middle">
+              <% order.items.each do |item| %>
+               <div class="row">
+                 <div class="col">
+                  <%= item.name %>
+                 </div>
+               </div>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= order.billing_amount.to_s(:delimited) %></td>
+            <td class="align-middle"><%= order.status_i18n %></td>
+            <td class="align-middle"><%= link_to '表示する', order_path(order), class: "btn btn-primary" %></td>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div><%= paginate @orders %></div>
+     </div>
+  </div>
+</div>

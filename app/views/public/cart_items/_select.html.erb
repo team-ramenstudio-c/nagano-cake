@@ -2,5 +2,5 @@
   <%= form.hidden_field :customer_id, :value => current_customer.id %>
   <%= form.hidden_field :item_id, :value => cart_item.item.id %>
   <%= form.select :quantity, *[1..50],{}, class: "form-select-sm" %>
-  <%= form.submit "変更", class: "btn btn-success change_button" %>
+  <%#= form.submit "変更", class: "btn btn-success change_button" %>
 <% end %>

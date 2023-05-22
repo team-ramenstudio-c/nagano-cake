@@ -6,9 +6,9 @@
   </div>
 
   <div class="row mt-3">
-     <div class="col^md-8">
-      <table class="table">
-        <thead>
+     <div class="col-md-8">
+      <table class="table table-inverse table-bordered border border-dark">
+        <thead class="bg-light">
   　　    　　 <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -30,19 +30,19 @@
         </tbody>
       </table>
      </div>
-     <div class="col-md-4">
-      <table class="table">
+     <div class="col-md-2 index-amount">
+      <table class="table table-inverse table-bordered border border-dark">
           <tbody>
             <tr>
-              <th>送料</th>
+              <th class="bg-light">送料</th>
               <td><%= @order.postage %></td>
             </tr>
             <tr>
-              <th>商品合計</th>
+              <th class="bg-light">商品合計</th>
               <td><%= render 'public/cart_items/total', total_amount: @total_amount %></td>
             </tr>
             <tr>
-              <th>請求合計</th>
+              <th class="bg-light">請求合計</th>
               <td><%= @order_total_amount.to_s(:delimited) %></td>
             </tr>
           </tbody>
@@ -50,7 +50,7 @@
      </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-4">
     <div class="col-md-2">
       <h5><strong>支払方法</strong></h5>
     </div>
@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-4">
     <div class="col-md-2">
       <h5><strong>お届け先</strong></h5>
     </div>
@@ -69,12 +69,14 @@
    </div>
   </div>
 
-  <div class="row">
-    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-     <%= f.hidden_field :shipping_name %>
-     <%= f.hidden_field :shipping_post_code %>
-     <%= f.hidden_field :shipping_address %>
-     <%= f.submit '注文を確定する', class: 'btn btn-success' %>
-    <% end %>
+  <div class="row mt-5">
+    <div class="col text-center">
+      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+       <%= f.hidden_field :shipping_name %>
+       <%= f.hidden_field :shipping_post_code %>
+       <%= f.hidden_field :shipping_address %>
+       <%= f.submit '注文を確定する', class: 'btn btn-success' %>
+      <% end %>
+    </div>
   </div>
 </div>
