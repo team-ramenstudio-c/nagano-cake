@@ -9,9 +9,9 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th scope="col" style="width: 30%"></th>
+          <th scope="col" style="width: 55%"></th>
+          <th scope="col" style="width: 15%"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,39 +24,105 @@
         <td><%= @order.id %></td>
       </tr>
          <td>配送先</td>
-         <td><%= @order.shipping_address.postal_code.to_s.insert(3, "-") %></td>
+         <td>
+          〒<%= @order.shipping_post_code.to_s.insert(3, "-") %>
+         　<%= @order.shipping_address%></br>
+         　<%= @order.shipping_name%>
+         </td>
+
       <tr>
-         <td>住所</td>
-         <td><%#= @customer.address %></td>
+         <td>支払い方法</td>
+         <td>
+           <%= @order.payment_method_i18n %></td>
       </tr>
+
       <tr>
-         <td>電話番号</td>
-         <td><%#= @customer.telephone_number %></td>
+         <td>注文ステータス</td>
+          <%= form_with model: @order ,url:admin_order_path(@order.id),method: :patch do |f|%>
+         <td>
+          <%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%>
+          <td><%= f.submit "更新",class:"btn btn-success"%></td>
+          <% end %>
+         </td>
+
       </tr>
       <tr>
          <td>メールアドレス</td>
-         <td><%#= @customer.email %></td>
+         <td><%= @order.customer.email %></td>
       </tr>
       <tr>
         <td>会員ステータス</td>
          <td>
-          <%# if @customer.is_deleted == true %>
-          <strong style="color:darkgray;"><%#= "退会" %></strong>
-          <%# else %>
-          <strong style="color:green;"><%#= "有効" %></strong>
-          <%# end %>
+          <% if @order.customer.is_deleted == true %>
+          <strong style="color:darkgray;"><%= "退会" %></strong>
+          <% else %>
+          <strong style="color:green;"><%= "有効" %></strong>
+          <% end %>
         </td>
       </tr>
+     </tbody>
+    </table>
 
-       <tr>
-         <td></td>
-         <td><%#= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
-         <td><%#= link_to "注文履歴一覧を見る",order_admin_customer_path(@customer.id),class: "btn btn-primary"%></td>
-       </tr>
+    </div>
+
+ <div class="row">
+   <div class="col-md-9 d-flex  mr-5">
+     <table class="table mt-3">
+      <thead class="table-light">
+        <tr align="center">
+          <th scope="col" style="width: 30%">商品名</th>
+          <th scope="col" style="width: 15%">単価（税込）</th>
+          <th scope="col" style="width: 10%">数量</th>
+          <th scope="col" style="width: 15%">小計</th>
+          <th scope="col" style="width: 20%">製作ステータス</th>
+          <th scope="col" style="width: 5%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+      <tr valign="middle">
+        <td><%= order_item.item.name %></td>
+        <td align="center">&yen;<%= order_item.price_including_tax%></td>
+        <td align="center"><%= order_item.quantity%></td>
+        <td align="center">&yen;<%= order_item.subtotal%></td>
+          <%= form_with model: @order ,url:admin_order_item_path(@order.item.id),method: :patch do |f|%>
+        <td>
+         <%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3"%>
+        <td><%= f.submit "更新",class:"btn btn-success"%></td>
+         <% end %>
+        </td>
+      </tr>
+       <% end %>
      </tbody>
     </table>
     </div>
 
+ <div class="col-md-3">
+     <table class="table">
+       <thead>
+         <tr>
+           <th></th>
+           <th></th>
+         </tr>
+       </thead>
+       <tbody class="table-light">
+         <tr>
+           <td scope="col" style="width: 80%"><strong>商品合計</strong></td>
+           <td align="right">&yen;<%= @order.billing_amount%></td>
+         </tr>
+          <tr>
+           <td scope="col" style="width: 20%"><strong>送料</strong></td>
+           <td align="right">&yen;<%= @order.postage %></td>
+         </tr>
+         <tr>
+           <td><strong>請求金額合計</strong></td>
+           <td align="right">&yen;<%= @order.include_postage %></td>
+         </tr>
+       </tbody>
+
+     </table>
+
+    </div>
 
   </div>
  </div>
