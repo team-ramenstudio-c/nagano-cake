@@ -4,6 +4,9 @@
       <% if customer_signed_in? %>
         <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
         <h5 class="mb-0">ようこそ、<%= current_customer.last_name %>さん</h5>
+      <% elsif admin_signed_in? %>
+        <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
+        <h3>管理者ログイン中</h3>
       <% else %>
         <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
         <div></div>
@@ -38,7 +41,6 @@
            <% end %>
          </li>
         <% elsif admin_signed_in? %>
-         <h3>管理者ログイン中</h3>
          <li class="nav-item">
            <%= link_to admin_items_path ,class: "nav-link" do %>
            <i class="fa-solid fa-cake-candles"></i>
