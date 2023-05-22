@@ -1,9 +1,15 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.order-new-title {
+  margin-left: 40px;
+}
+
+
 .anime-box .OneTextAnime{
 	display: flex;
 	overflow: hidden;
+	color: #aa8f7b;
 }
 
 .anime-box .OneTextAnime span{
