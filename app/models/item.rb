@@ -36,4 +36,8 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "genre_id", "id", "is_on_sale", "name", "price_without_tax", "updated_at"]
+  end
 end
+

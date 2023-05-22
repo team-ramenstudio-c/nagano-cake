@@ -20,6 +20,7 @@ scope module: :public do
   # homes
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  get "search" => "searches#search"
   get 'items/:id/genre_search' => 'items#genre_search', as: 'genre_search'
   # items
   resources :items, only: [:index, :show]
@@ -50,6 +51,7 @@ end
  #管理者側のルーティング設定
  namespace :admin do
     get "/" => "homes#top"
+    get "search" => "searches#search"
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
     resources :customers, only: [:index,:show,:edit,:update]

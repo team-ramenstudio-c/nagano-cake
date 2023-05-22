@@ -2,6 +2,8 @@ class Public::ItemsController < ApplicationController
   before_action :all_genre
 
   def index
+    @q = Item.ransack(params[:q])
+    @item = @q.result
     @items = Item.all.page(params[:page]).per(8).order(created_at: :DESC)
   end
 
@@ -14,7 +16,6 @@ class Public::ItemsController < ApplicationController
     @genre = Genre.find(params[:id])
     @items = @genre.items.order(created_at: :DESC)
   end
-
 
   private
 
