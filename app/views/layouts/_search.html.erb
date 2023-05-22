@@ -1,0 +1,14 @@
+<% if controller_name != 'sessions' %>
+<div class="search_form pe-3">
+  <%= search_form_for @q, url: search_path, class:"row justify-content-end" do |f| %>
+  <div class="col-md-4 p-0">
+    <%= f.search_field :name_cont, class:"form-control" %>
+  </div>
+  <div class="col-md-1 p-0">
+    <button class="btn btn-outline-success" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  <% end %>
+</div>
+<% end %>
