@@ -14,49 +14,89 @@
       <ul class="navbar-nav mx-auto justify-content-around">
         <% if customer_signed_in? %>
          <li class="nav-item">
-           <%= link_to "マイページ",customers_mypage_path ,class: "nav-link" %>
+           <%= link_to customers_mypage_path ,class: "nav-link" do %>
+           <i class="fa-solid fa-user"></i>
+           マイページ
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "商品一覧",items_path ,class: "nav-link" %>
+           <%= link_to items_path ,class: "nav-link" do %>
+           <i class="fa-solid fa-cake-candles"></i>
+           商品一覧
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "カート",cart_items_path, class: "nav-link" %>
+           <%= link_to cart_items_path, class: "nav-link" do %>
+           <i class="fa-solid fa-cart-shopping"></i>
+           カート
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "ログアウト",destroy_customer_session_path, method: :delete, class: "nav-link" %>
+           <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+           <i class="fa-solid fa-right-from-bracket"></i>
+           ログアウト
+           <% end %>
          </li>
         <% elsif admin_signed_in? %>
          <h3>管理者ログイン中</h3>
          <li class="nav-item">
-           <%= link_to "商品一覧",admin_items_path ,class: "nav-link" %>
+           <%= link_to admin_items_path ,class: "nav-link" do %>
+           <i class="fa-solid fa-cake-candles"></i>
+           商品一覧
+           <% end %>
+         <li class="nav-item">
+           <%= link_to admin_customers_path ,class: "nav-link" do %>
+           <i class="fa-solid fa-user-check"></i>
+           会員一覧
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "会員一覧",admin_customers_path ,class: "nav-link" %>
+           <%= link_to admin_path ,class: "nav-link" do %>
+           <i class="fa-solid fa-check"></i>
+           注文履歴一覧
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "注文履歴一覧",admin_path ,class: "nav-link" %>
+           <%= link_to admin_genres_path, class: "nav-link" do %>
+           <i class="fa-solid fa-gift"></i>
+           ジャンル一覧
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "ジャンル一覧",admin_genres_path, class: "nav-link" %>
-         </li>
-         <li class="nav-item">
-           <%= link_to "ログアウト",destroy_admin_session_path, method: :delete, class: "nav-link" %>
+           <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+         <i class="fa-solid fa-right-from-bracket"></i>
+           ログアウト
+           <% end %>
          </li>
        <% else %>
          <li class="nav-item">
-           <%= link_to "About", about_path, class: "nav-link" %>
+           <%= link_to about_path, class: "nav-link" do %>
+           <i class="fa-solid fa-heart"></i>
+           About
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "商品一覧",items_path, class: "nav-link" %>
+           <%= link_to items_path, class: "nav-link" do %>
+         <i class="fa-solid fa-cake-candles"></i>
+           商品一覧
+           <% end %>
+         <li class="nav-item">
+           <%= link_to new_customer_registration_path, class: "nav-link" do %>
+           <i class="fa-solid fa-user-plus"></i>
+           新規登録
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "新規登録",new_customer_registration_path, class: "nav-link" %>
+           <%= link_to new_customer_session_path, class: "nav-link" do %>
+           <i class="fa-solid fa-right-to-bracket"></i>
+           ログイン
+           <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "ログイン",new_customer_session_path, class: "nav-link" %>
-         </li>
-         <li class="nav-item">
-           <%= link_to "管理者ログイン",new_admin_session_path, class: "nav-link" %>
+           <%= link_to new_admin_session_path, class: "nav-link" do %>
+           <i class="fa-solid fa-gears"></i>
+           管理者ログイン
+           <% end %>
          </li>
        <% end %>
        </ul>
