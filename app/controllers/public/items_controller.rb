@@ -3,6 +3,8 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.all.page(params[:page]).per(8)
+    @q = Item.ransack(params[:q])
+    @item = @q.result
   end
 
   def show
@@ -14,7 +16,6 @@ class Public::ItemsController < ApplicationController
     @genre = Genre.find(params[:id])
     @items = @genre.items
   end
-
 
   private
 
