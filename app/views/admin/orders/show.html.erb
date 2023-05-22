@@ -1,2 +1,63 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+ <div class="col-md-10 mx-auto mt-5">
+
+  <div class="row mb-5">
+    <h2>注文履歴詳細</h2>
+  </div>
+
+    <div class="col-md-8 d-flex justify-content-center mr-5">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>購入者</td>
+        <td><%= @order.customer.full_name %></td>
+      </tr>
+      <tr>
+        <td>注文ID</td>
+        <td><%= @order.id %></td>
+      </tr>
+         <td>配送先</td>
+         <td><%= @order.shipping_address.postal_code.to_s.insert(3, "-") %></td>
+      <tr>
+         <td>住所</td>
+         <td><%#= @customer.address %></td>
+      </tr>
+      <tr>
+         <td>電話番号</td>
+         <td><%#= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+         <td>メールアドレス</td>
+         <td><%#= @customer.email %></td>
+      </tr>
+      <tr>
+        <td>会員ステータス</td>
+         <td>
+          <%# if @customer.is_deleted == true %>
+          <strong style="color:darkgray;"><%#= "退会" %></strong>
+          <%# else %>
+          <strong style="color:green;"><%#= "有効" %></strong>
+          <%# end %>
+        </td>
+      </tr>
+
+       <tr>
+         <td></td>
+         <td><%#= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
+         <td><%#= link_to "注文履歴一覧を見る",order_admin_customer_path(@customer.id),class: "btn btn-primary"%></td>
+       </tr>
+     </tbody>
+    </table>
+    </div>
+
+
+  </div>
+ </div>
+</div>

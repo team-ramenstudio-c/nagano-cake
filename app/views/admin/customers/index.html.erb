@@ -1,10 +1,10 @@
 <div class= 'container'>
  <div class="col-md-10 mx-auto mt-5">
 
-  <div class="row">
+  <div class="row mb-3">
    <h2>会員一覧</h2>
   </div>
-  
+
   <table class ="table">
       <thead class="table-light">
         <tr align="center">
@@ -15,21 +15,27 @@
         </tr>
       </thead>
       <tbody>
-        <% @customer.each do |customer|%>
+        <% @customers.each do |customer|%>
         <tr align="center">
         <td><%= customer.id %></td>
         <td>
           <%= link_to admin_customer_path(customer.id) do%>
-          <%= %>
+          <%= customer.full_name %>
           <% end %>
         </td>
-
         <td><%= customer.email %></td>
-        <td><%=%></td>
-
+        <td>
+          <% if customer.is_deleted == true %>
+          <strong style="color:darkgray;"><%= "退会" %></strong>
+          <% else %>
+          <strong style="color:green;"><%= "有効" %></strong>
+          <% end %>
+        </td>
          <% end %>
-
-
-
+         
+   <div class="d-flex justify-content-center mt-4">
+    <%= paginate @customers %>
+   </div>
+    
  </div>
 </div>
