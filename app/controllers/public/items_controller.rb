@@ -5,6 +5,7 @@ class Public::ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @item = @q.result
     @items = Item.all.page(params[:page]).per(8).order(created_at: :DESC)
+
   end
 
   def show
