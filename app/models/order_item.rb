@@ -9,5 +9,9 @@ class OrderItem < ApplicationRecord
 
   #enum設定
   enum production_status: { unable_to_start: 0, waiting_for_production: 1,  in_production: 2, completion_of_production: 3 }
+  
+  def subtotal
+    self.price_including_tax * self.quantity
+  end
 
 end

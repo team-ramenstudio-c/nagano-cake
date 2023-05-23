@@ -1,2 +1,92 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="col-md-10 mx-auto mt-5">
+  <div class="row">
+
+  <div class="form d-flex">
+  <%= form_with model: @customer, url:admin_customer_path, method: :patch do |f| %>
+
+  <div class="row">
+   <h2>会員情報編集</h2>
+  </div>
+
+　<div class="form-group row d-flex">
+   <div class="col-md-4">
+　  <p class="col-md-4">会員ID</p>
+　 </div>
+　<div class="col-md-4">
+　  <p><%= @customer.id %></p>
+　</div>
+　</div>
+
+  <div class="form-group row d-flex">
+    <%= f.label :氏名,class:"col-md-4 col-form-label" %>
+    <div class="col-md-4">
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",class:"form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :first_name, autocomplete: "first_name",class:"form-control" %>
+    </div>
+  </div>
+
+    <div class="form-group row d-flex mt-3">
+    <%= f.label :フリガナ,class:"col-md-4 col-form-label" %>
+      <div class="col-md-4">
+        <%= f.text_field :furigana_last_name, autocomplete: "furigana_last_name",class:"form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :furigana_first_name, autocomplete: "furigana_first_name",class:"form-control" %>
+    </div>
+  </div>
+
+   <div class="form-group row mt-3">
+    <%= f.label :郵便番号,class:"col-md-4 col-form-label" %>
+    <div class="col-md-4">
+      <%= f.text_field :post_code, pattern:"^[0-9][0-9]*$", autocomplete: "post_code",class:"form-control" %>
+    </div>
+  </div>
+
+   <div class="form-group row mt-3">
+    <%= f.label :住所,class:"col-md-4 col-form-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :address,autocomplete: "address",class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row mt-3">
+   <%= f.label :電話番号,class:"col-md-4 col-form-label" %>
+  <div class="col-md-4">
+   <%= f.text_field :telephone_number,pattern:"^[0-9][0-9]*$",autocomplete: "telephone_number",class:"form-control" %>
+  </div>
+  </div>
+
+  <div class="form-group row mt-3">
+    <%= f.label :メールアドレス,class:"col-md-4 col-form-label" %>
+   <div class="col-md-8">
+    <%= f.email_field :email, autocomplete: "email",class:"form-control" %>
+    </div>
+  </div>
+
+   <div class="form-group row mt-3">
+     <%= f.label :is_deleted,"会員ステータス",class:"col-md-4 col-form-label" %>
+    <div class="col-md-3">
+     <%= f.radio_button :is_deleted, :false,class:"form-check-input" %>
+     <%= f.label :is_deleted, "有効",class:"form-check-label" %>
+    </div>
+     <div class="col-md-3">
+     <%= f.radio_button :is_deleted, :true,class:"form-check-input" %>
+     <%= f.label :is_deleted, "退会",class:"form-check-label" %>
+    </div>
+    </div>
+
+    <div class="offset-md-4 raw mt-3">
+     <%= f.submit "変更を保存", class:"btn btn-success"%>
+    </div>
+
+  </div>
+
+  <% end %>
+
+
+  </div>
+ </div>
+</div>
