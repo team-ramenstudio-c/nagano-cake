@@ -1,0 +1,12 @@
+<% order_items.each do |order_item| %>
+<tr valign="middle">
+<td><%= order_item.item.name %></td>
+<td align="center">&yen;<%= order_item.price_including_tax %></td>
+<td align="center"><%= order_item.quantity %></td>
+<td align="center">&yen;<%= order_item.subtotal %></td>
+<%= form_with model: order_item ,url:admin_order_item_path(order_item),local:false,method: :patch do |f| %>
+<td><%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3" %></td>
+<td><%= f.submit "更新",class:"btn btn-success" %></td>
+<% end %>
+</tr>
+<% end %>

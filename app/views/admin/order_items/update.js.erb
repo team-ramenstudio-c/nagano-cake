@@ -1,0 +1,2 @@
+$('.order_status').html("<%= j(render "admin/orders/order_status", order: @order) %>");
+$('.order_item_<%= @order_items.id %>.production_status').html("<%= j(render "admin/orders/production_status",order_item: @order_items) %>");
