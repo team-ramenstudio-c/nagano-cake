@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
       current_customer.cart_items.destroy_all
       redirect_to completed_orders_path
     else
-      flash[:notice] = "注文ができませんでした"
+      flash[:notice] = "住所は必須です"
       @order = Order.new(order_params)
       render 'new'
     end
