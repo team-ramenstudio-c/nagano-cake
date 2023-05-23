@@ -17,4 +17,9 @@ class Order < ApplicationRecord
     "〒" + customer.post_code + " " + customer.address + " " + customer.last_name + customer.first_name
   end
 
+ 
+  def include_postage
+   self.billing_amount + self.postage
+  end 
+  
 end

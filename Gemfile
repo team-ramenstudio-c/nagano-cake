@@ -68,3 +68,5 @@ gem 'enum_help'
 gem 'pry-byebug'
 
 gem 'rails-i18n'
+
+gem 'jquery-rails'

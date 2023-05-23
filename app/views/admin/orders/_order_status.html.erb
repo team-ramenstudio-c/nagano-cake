@@ -1,0 +1,6 @@
+<td>注文ステータス</td>
+ <%= form_with model: order ,url:admin_order_path(order.id),local:false,method: :patch do |f|%>
+<td><%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%></td>
+<td><%= f.submit "更新",class:"btn btn-success"%></td>
+ <% end %>
+
