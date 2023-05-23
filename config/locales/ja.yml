@@ -1,22 +1,19 @@
 ja:
+
  enums:
   order:
    payment_method:
     credit_card: "クレジットカード"
     transfer: "銀行振込"
-
-
 # ja:
 # enums:
-#   order:
+# order:
    status:
     waiting_for_payment: "入金待ち"
     confirmation_of_payment: "入金確認"
     in_production: "製作中"
     preparing_to_ship: "発送準備中"
     shipped: "発送済み"
-
-
 # ja:
 # enums:
   order_item:
@@ -26,23 +23,16 @@ ja:
     in_production: "制作中"
     completion_of_production: "制作完了"
 
-# sign_up
   activerecord:
+    attributes:
     errors:
-      models:
-        customer:
-          attributes:
-            last_name:
-              blank: "姓を入力してください"
-            first_name:
-              blank: "名を入力してください"
-            furigana_last_name:
-              blank: "フリガナ（姓）を入力してください"
-            furigana_first_name:
-              blank: "フリガナ（名）を入力してください"
-            post_code:
-              blank: "郵便番号を入力してください"
-            address:
-              blank: "住所を入力してください"
-            telephone_number:
-              blank: "電話番号を入力してください"
+      customer:
+        first_name: 性
+        last_name: 名
+        furigana_last_name: セイ
+        furigana_first_name: メイ
+        post_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
