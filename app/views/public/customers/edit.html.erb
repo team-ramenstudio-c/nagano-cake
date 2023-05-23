@@ -5,6 +5,7 @@
     <h1>会員情報編集</h1>
 
   <%= form_with model: @customer, url:customers_information_path do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group row mt-3" >
       <label class="col-md-3">氏名</label>
       <div class="col-md-3">

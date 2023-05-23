@@ -1,9 +1,13 @@
 <div class= 'container'>
   <div class='row'>
-  <div class="col-md-8 mt-3 mx-auto p-3" style="background-color: #ffffe0; color: #696969;">
 
-<h2 class="text-center">ログイン</h2>
-<p>会員の方はこちらからログイン</p>
+  <div class='login-flash-message'>
+     <%= flash[:alert] %>
+  </div>
+
+  <div class="col-md-8 mt-3 mx-auto p-3" style="background-color: #ffffe0; color: #696969;">
+    <h2 class="text-center">ログイン</h2>
+    <p>会員の方はこちらからログイン</p>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
