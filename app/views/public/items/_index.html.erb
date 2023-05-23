@@ -3,7 +3,9 @@
   <div>
     <p>
       <%= link_to item_path(f) do %>
-       <%= image_tag f.get_image(200,200), class: "image" %>
+       <div class="image-box">
+        <%= image_tag f.get_image(200,200), class: "image" %>
+       </div>
       <% end %>
     </p>
     <p><strong><%= f.name %></strong>（<%= f.sale_status %>）</p>
