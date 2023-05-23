@@ -15,8 +15,8 @@
         </tr>
       </thead>
       <tbody>
+          <% @orders.each do |order|%>
         <tr>
-         <% @orders.each do |order|%>
          <td>
          <%=link_to admin_order_path(order.id) do%>
          <%= order.created_at %>
@@ -26,8 +26,8 @@
          <td><%= OrderItem.where(order_id: order.id).pluck(:quantity).sum %></td>
          <!--enum日本語化-->
          <td><%= order.status_i18n%></td>
-         <% end %>
        </tr>
+      　 <% end %>
       </tbody>
     </table>
 

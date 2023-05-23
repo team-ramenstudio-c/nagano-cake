@@ -26,25 +26,21 @@
          <td>配送先</td>
          <td>
           〒<%= @order.shipping_post_code.to_s.insert(3, "-") %>
-         　<%= @order.shipping_address%></br>
-         　<%= @order.shipping_name%>
+          <%= @order.shipping_address%></br>
+          <%= @order.shipping_name%>
          </td>
 
       <tr>
          <td>支払い方法</td>
-         <td>
-           <%= @order.payment_method_i18n %></td>
+         <td><%= @order.payment_method_i18n %></td>
       </tr>
 
-      <tr>
-         <td>注文ステータス</td>
-          <%= form_with model: @order ,url:admin_order_path(@order.id),method: :patch do |f|%>
-         <td>
-          <%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%>
-          <td><%= f.submit "更新",class:"btn btn-success"%></td>
-          <% end %>
-         </td>
-
+      <tr class="order_status">
+        <td>注文ステータス</td>
+         <%= form_with model: @order ,url:admin_order_path(@order.id),local:true,method: :patch do |f|%>
+        <td><%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%></td>
+        <td><%= f.submit "更新",class:"btn btn-success"%></td>
+         <% end %>
       </tr>
       <tr>
          <td>メールアドレス</td>
@@ -78,21 +74,19 @@
           <th scope="col" style="width: 5%"></th>
         </tr>
       </thead>
-      <tbody>
-        <% @order.order_items.each do |order_item| %>
-      <tr valign="middle">
-        <td><%= order_item.item.name %></td>
-        <td align="center">&yen;<%= order_item.price_including_tax%></td>
-        <td align="center"><%= order_item.quantity%></td>
-        <td align="center">&yen;<%= order_item.subtotal%></td>
-          <%= form_with model: @order ,url:admin_order_item_path(@order.item.id),method: :patch do |f|%>
-        <td>
-         <%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3"%>
-        <td><%= f.submit "更新",class:"btn btn-success"%></td>
+      <tbody class ="production_status">
+          <% @order_items.each do |order_item| %>
+          <tr valign="middle">
+          <td><%= order_item.item.name %></td>
+          <td align="center">&yen;<%= order_item.price_including_tax %></td>
+          <td align="center"><%= order_item.quantity %></td>
+          <td align="center">&yen;<%= order_item.subtotal %></td>
+            <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
+          <td><%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3" %></td>
+          <td><%= f.submit "更新",class:"btn btn-success" %></td>
          <% end %>
-        </td>
-      </tr>
-       <% end %>
+         </tr>
+         <% end %>
      </tbody>
     </table>
     </div>
