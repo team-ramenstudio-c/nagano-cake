@@ -1,58 +1,64 @@
 <div class="container mt-5 d-flex-column space-around">
   <div class="row  row-content">
-   <div class="col-md-10">
-    <div class="d-flex head-items mb-4">
-      <h4 class="col-md-4 bg-light text-center">ショッピングカート</h4>
-      <%= link_to 'カートを空にする',clear_cart_items_path, method: :delete, class: "btn btn-danger" %>
-     </div>
-    <table class="table table-hover table-inverse table-bordered border border-dark">
-      <thead class="bg-light">
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
-          <tr id="cart_item">
-            <td class="align-middle"><%= image_tag cart_item.item.get_image(100, 100), class: "p-2" %> <%= cart_item.item.name %></td>
-            <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td id="select-form" class="align-middle">
-              <%= render 'select', cart_item: cart_item %>
-            </td>
-            <td class="align-middle subtotal-area">
-              <%= render 'subtotal', cart_item: cart_item %>
-            </td>
-            <td class="align-middle text-center"><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+   <% if @cart_items.blank? %>
+    <div class="col-md-8 text-center">
+     <h3>カート内に商品はございません</h3>
+    </div>
+   <% else %>
+     <div class="col-md-10">
+      <div class="d-flex head-items mb-4">
+        <h4 class="col-md-4 bg-light text-center">ショッピングカート</h4>
+        <%= link_to 'カートを空にする',clear_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" }   %>
+       </div>
+      <table class="table table-hover table-inverse table-bordered border border-dark">
+        <thead class="bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-   </div>
-  </div>
-  <div class="row row-content-middle mt-3">
-    <div class="col-md-4">
-     <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr id="cart_item">
+              <td class="align-middle"><%= image_tag cart_item.item.get_image(100, 100), class: "p-2 image" %> <%= cart_item.item.name %></td>
+              <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
+              <td id="select-form" class="align-middle">
+                <%= render 'select', cart_item: cart_item %>
+              </td>
+              <td class="align-middle subtotal-area">
+                <%= render 'subtotal', cart_item: cart_item %>
+              </td>
+              <td class="align-middle text-center"><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" }   %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+     </div>
     </div>
-    <div class="col-md-2">
-     <table class="table table-inverse table-bordered border border-dark">
-       <tbody>
-         <tr>
-           <th class="bg-light p-2">合計金額</th>
-           <td class="total-area">
-             <%= render 'total', total_amount: @total_amount %>
-            </td>
-         </tr>
-       </tbody>
-     </table>
+    <div class="row row-content-middle mt-3">
+      <div class="col-md-4">
+       <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-md-2">
+       <table class="table table-inverse table-bordered border border-dark">
+         <tbody>
+           <tr>
+             <th class="bg-light p-2">合計金額</th>
+             <td class="total-area">
+               <%= render 'total', total_amount: @total_amount %>
+              </td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
     </div>
-  </div>
-  <div class="row mt-5 row-content">
-   <div class="col-md-3 text-center">
-     <%= link_to '情報入力へ進む', new_order_path, class: "btn btn-success" %>
-   </div>
+    <div class="row mt-5 row-content">
+     <div class="col-md-3 text-center">
+       <%= link_to '情報入力へ進む', new_order_path, class: "btn btn-success" %>
+     </div>
+   <% end %>
   </div>
 </div>
