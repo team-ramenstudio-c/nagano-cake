@@ -26,6 +26,11 @@
    color: #E5E5CB;
  }
 
+ .navbar-nav li:hover {
+  color: #E5E5CB;
+  text-decoration: underline;
+ }
+
  main {
    min-height: 100vh;
    background-color: #E5E5CB;
