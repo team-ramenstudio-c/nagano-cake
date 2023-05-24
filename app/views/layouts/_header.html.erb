@@ -9,13 +9,15 @@
         <h5 class="mb-0", style= "color: #E5E5CB;" >ようこそ、<%= current_customer.last_name %>さん</h5>
       </div>
     </div>
-      <% elsif admin_signed_in? %>
-    <div class="navbar navbar-brand">
+    <% elsif admin_signed_in? %>
+    <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
+      <div class="navbar navbar-brand">
       <%= link_to root_path do %>
         <%= image_tag 'logo.jpg', alt: "ロゴ" %>
       <% end %>
+      <h5 class="mb-0", style= "color: #E5E5CB;">管理者ログイン中</h5>
+      </div>
     </div>
-      <h3>管理者ログイン中</h3>
       <% else %>
       <div class="navbar navbar-brand">
       <%= link_to root_path do %>

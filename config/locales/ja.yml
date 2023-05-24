@@ -23,16 +23,11 @@ ja:
     in_production: "制作中"
     completion_of_production: "制作完了"
 
-  activerecord:
-    attributes:
-    errors:
-      customer:
-        first_name: 性
-        last_name: 名
-        furigana_last_name: セイ
-        furigana_first_name: メイ
-        post_code: 郵便番号
-        address: 住所
-        telephone_number: 電話番号
-        email: メールアドレス
-        password: パスワード
+ activerecord:
+  models:
+    shipping_address: 配送先
+  attributes:
+    shipping_address:
+      postal_code: 郵便番号
+      address: 住所
+      name: 宛名
