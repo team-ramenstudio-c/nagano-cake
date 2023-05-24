@@ -22,3 +22,12 @@ ja:
     waiting_for_production: "制作待ち"
     in_production: "制作中"
     completion_of_production: "制作完了"
+
+ activerecord:
+  models:
+    shipping_address: 配送先
+  attributes:
+    shipping_address:
+      postal_code: 郵便番号
+      address: 住所
+      name: 宛名

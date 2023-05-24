@@ -6,6 +6,7 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(current_customer.id)
+
   end
 
   def new
@@ -22,6 +23,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @customer.update(customer_params)
     redirect_to customers_mypage_path
+    flash[:notice] = "変更が完了しました"
   end
 
   def check
