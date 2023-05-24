@@ -7,9 +7,9 @@
 
   <div class="row mt-3">
      <div class="col">
-      <table class="table table-hover table-inverse table-bordered border border-dark">
+      <table class="table table-hover table-inverse table-bordered", style="border-color: #3C2A21;">
         <thead class="bg-light">
-  　　    　　 <tr>
+          <tr align=center >
             <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
@@ -36,9 +36,9 @@
                </div>
               <% end %>
             </td>
-            <td class="align-middle"><%= order.billing_amount.to_s(:delimited) %>円</td>
+            <td class="align-middle text-center"><%= order.billing_amount.to_s(:delimited) %>円</td>
             <td class="align-middle"><%= order.status_i18n %></td>
-            <td class="align-middle"><%= link_to '表示する', order_path(order), class: "btn btn-primary" %></td>
+            <td class="align-middle text-center"><%= link_to '表示する', order_path(order), class: "btn", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
             </td>
           </tr>
         <% end %>

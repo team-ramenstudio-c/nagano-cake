@@ -18,7 +18,7 @@
   </div>
 
   <div class="col-md-1">
-   <%= f.submit "新規登録", class:"btn btn-success" %>
+   <%= f.submit "新規登録", class:"btn", style: "background-color: #1A120B; color: #E5E5CB;" %>
   </div>
   <% end %>
 
@@ -35,7 +35,7 @@
         <% @genres.each do |genre|%>
         <tr>
         <td valign="middle"><%= genre.name%></td>
-        <td align="center"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm btn-success" %></td>
+        <td align="center"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
         </tr>
         <% end %>
       </tbody>

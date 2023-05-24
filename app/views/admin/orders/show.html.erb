@@ -39,7 +39,7 @@
         <td>注文ステータス</td>
          <%= form_with model: @order ,url:admin_order_path(@order.id),local:true,method: :patch do |f|%>
         <td><%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%></td>
-        <td><%= f.submit "更新",class:"btn btn-success"%></td>
+        <td><%= f.submit "更新",class:"btn", style: "background-color: #1A120B; color: #E5E5CB;"%></td>
          <% end %>
       </tr>
       <tr>
@@ -83,7 +83,7 @@
           <td align="center"><%= order_item.subtotal.to_s(:delimited) %>円</td>
             <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
           <td><%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3" %></td>
-          <td><%= f.submit "更新",class:"btn btn-success" %></td>
+          <td><%= f.submit "更新",class:"btn", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
          <% end %>
          </tr>
          <% end %>
