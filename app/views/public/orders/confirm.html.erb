@@ -7,9 +7,9 @@
 
   <div class="row mt-3">
      <div class="col-md-8">
-      <table class="table table-inverse table-bordered border border-dark">
+      <table class="table table-inverse table-bordered", style="border-color: #3C2A21;">
         <thead class="bg-light">
-  　　    　　 <tr>
+          <tr align=center >
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -20,9 +20,9 @@
           <% @cart_items.each do |cart_item| %>
           <tr id="cart_item">
             <td class="align-middle"><%= image_tag cart_item.item.get_image(100, 100), class: "p-2" %> <%= cart_item.item.name %></td>
-            <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
-            <td class="align-middle"><%= cart_item.quantity %></td>
-            <td class="align-middle subtotal-area">
+            <td class="align-middle  text-center"><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
+            <td class="align-middle  text-center"><%= cart_item.quantity %></td>
+            <td class="align-middle subtotal-area  text-center">
               <%= render 'public/cart_items/subtotal', cart_item: cart_item %>
             </td>
           </tr>
@@ -31,19 +31,19 @@
       </table>
      </div>
      <div class="col-md-2 index-amount">
-      <table class="table table-inverse table-bordered border border-dark">
+      <table class="table table-inverse table-bordered", style="border-color: #3C2A21;">
           <tbody>
             <tr>
               <th class="bg-light">送料</th>
-              <td><%= @order.postage %>円</td>
+              <td class="text-center"><%= @order.postage %>円</td>
             </tr>
             <tr>
               <th class="bg-light">商品合計</th>
-              <td><%= render 'public/cart_items/total', total_amount: @total_amount %></td>
+              <td class="text-center"><%= render 'public/cart_items/total', total_amount: @total_amount %></td>
             </tr>
             <tr>
               <th class="bg-light">請求合計</th>
-              <td><%= @order_total_amount.to_s(:delimited) %>円</td>
+              <td class="text-center"><%= @order_total_amount.to_s(:delimited) %>円</td>
             </tr>
           </tbody>
        </table>
@@ -75,7 +75,7 @@
        <%= f.hidden_field :shipping_name %>
        <%= f.hidden_field :shipping_post_code %>
        <%= f.hidden_field :shipping_address %>
-       <%= f.submit '注文を確定する', class: 'btn btn-success', data: { confirm: "注文確定をします🍰 よろしいですか？" }   %>
+       <%= f.submit '注文を確定する', class: 'btn', style: "background-color: #1A120B; color: #E5E5CB;", data: { confirm: "注文確定をします🍰 よろしいですか？" }   %>
       <% end %>
     </div>
   </div>

@@ -57,7 +57,7 @@ class Public::OrdersController < ApplicationController
         @order_item = OrderItem.new
         @order_item.item_id = cart_item.item_id
         @order_item.order_id = @order.id
-        @order_item.price_including_tax = cart_item.subtotal
+        @order_item.price_including_tax = cart_item.item_with_tax_price
         @order_item.quantity = cart_item.quantity
         @order_item.production_status = 0
         @order_item.save
