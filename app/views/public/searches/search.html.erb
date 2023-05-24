@@ -1,11 +1,13 @@
-<div class="container">
+<div class="container mt-5">
   <div class='row'>
-    <table class="table border table-hover table-inverse">
+    <div class="col-md-10 mx-auto p-3 rounded" style="background-color: #E5E5CB;">
+
+    <table class="table table-borderless table-hover table-inverse">
       <% if @result == [] %>
-        <h3 class="mt-3 text-center">検索結果がありません。</h3>
+        <h3 class="text-center">検索結果がありません。</h3>
       <% elsif @item.present? %>
       <% search_word = @q.name_cont %>
-    <h2 class="mt-3">検索結果 "<%= search_word %>"</h2>
+    <h2>検索結果 "<%= search_word %>"</h2>
       <thead>
         <tr>
           <th>image</th>
@@ -20,10 +22,12 @@
           <td><%= link_to f.name, item_path(f.id) %></td>
           <td>￥<%= f.price_without_tax.to_s(:delimited) %></td>
         </tr>
+      </tbody>
         <% end %>
       <% else %>
         <h3 class="mt-3 text-center">検索結果がありません。</h3>
       <% end %>
     </table>
+    </div>
   </div>
 </div>

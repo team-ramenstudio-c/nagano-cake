@@ -1,15 +1,28 @@
-<nav class="navbar navbar-expand-lg bg-light pt-3 pb-3 text-center">
-   <div class="row collapse navbar-collapse">
-     <div class="d-flex justify-content-around align-items-center col-md-6">
+<nav class="navbar navbar-expand-lg text-center pt-0 pb-0">
+   <div class="collapse navbar-collapse">
+     <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
       <% if customer_signed_in? %>
-        <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
-        <h5 class="mb-0">ようこそ、<%= current_customer.last_name %>さん</h5>
+      <div class="navbar navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', alt: "ロゴ" %>
+        <% end %>
+        <h5 class="mb-0", style= "color: #E5E5CB;" >ようこそ、<%= current_customer.last_name %>さん</h5>
+      </div>
+    </div>
       <% elsif admin_signed_in? %>
-        <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
-        <h3>管理者ログイン中</h3>
+    <div class="navbar navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.jpg', alt: "ロゴ" %>
+      <% end %>
+    </div>
+      <h3>管理者ログイン中</h3>
       <% else %>
-        <div class="navber navber-brand"><%= link_to 'ロゴ', root_path %></div>
-        <div></div>
+      <div class="navbar navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.jpg', alt: "ロゴ" %>
+      <% end %>
+      <div></div>
+    </div>
       <% end %>
      </div>
 
@@ -17,92 +30,86 @@
       <ul class="navbar-nav mx-auto justify-content-around">
         <% if customer_signed_in? %>
          <li class="nav-item">
-           <%= link_to customers_mypage_path ,class: "nav-link" do %>
+           <%= link_to customers_mypage_path ,class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-user"></i>
            マイページ
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to items_path ,class: "nav-link" do %>
+           <%= link_to items_path ,class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-cake-candles"></i>
            商品一覧
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to cart_items_path, class: "nav-link" do %>
+           <%= link_to cart_items_path, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-cart-shopping"></i>
            カート
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+           <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-right-from-bracket"></i>
            ログアウト
            <% end %>
          </li>
         <% elsif admin_signed_in? %>
          <li class="nav-item">
-           <%= link_to admin_items_path ,class: "nav-link" do %>
+           <%= link_to admin_items_path ,class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-cake-candles"></i>
            商品一覧
            <% end %>
          <li class="nav-item">
-           <%= link_to admin_customers_path ,class: "nav-link" do %>
+           <%= link_to admin_customers_path ,class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-user-check"></i>
            会員一覧
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to admin_path ,class: "nav-link" do %>
+           <%= link_to admin_path ,class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-check"></i>
            注文履歴一覧
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to admin_genres_path, class: "nav-link" do %>
+           <%= link_to admin_genres_path, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-gift"></i>
            ジャンル一覧
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+           <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link", style: "color: #E5E5CB;" do %>
          <i class="fa-solid fa-right-from-bracket"></i>
            ログアウト
            <% end %>
          </li>
        <% else %>
          <li class="nav-item">
-           <%= link_to about_path, class: "nav-link" do %>
+           <%= link_to about_path, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-heart"></i>
            About
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to items_path, class: "nav-link" do %>
+           <%= link_to items_path, class: "nav-link", style: "color: #E5E5CB;" do %>
          <i class="fa-solid fa-cake-candles"></i>
            商品一覧
            <% end %>
          <li class="nav-item">
-           <%= link_to new_customer_registration_path, class: "nav-link" do %>
+           <%= link_to new_customer_registration_path, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-user-plus"></i>
            新規登録
            <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to new_customer_session_path, class: "nav-link" do %>
+           <%= link_to new_customer_session_path, class: "nav-link", style: "color: #E5E5CB;" do %>
            <i class="fa-solid fa-right-to-bracket"></i>
            ログイン
            <% end %>
          </li>
-         <li class="nav-item">
-           <%= link_to new_admin_session_path, class: "nav-link" do %>
-           <i class="fa-solid fa-gears"></i>
-           管理者ログイン
-           <% end %>
-         </li>
        <% end %>
        </ul>
-       <div class="me-3">
+       <div class="mt-2 me-5">
         <%= render 'layouts/search', q: @q %>
       </div>
       </div>
