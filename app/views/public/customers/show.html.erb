@@ -1,47 +1,55 @@
-<div class="container">
-
-    <h1>マイページ</h1>
-
-  <div class="d-flex justify-content-between align-items-center mb-2" style="width: 200px;">
-    <p class="mb-0">登録情報</p>
-    <%= link_to "編集する", customers_information_edit_path, :class => "btn btn-success d-flex align-items-center ms-3" %>
+<div class="container mt-5">
+  <div class='row justify-content-center'>
+    <div class="col-md-8">
+    <h2>マイページ</h2>
+  <div class='row mx-auto'>
+    <div class="col-md-3 d-flex mt-3 mb-2 justify-content-between align-items-center">
+      <h5 class="mb-0">登録情報</h5>
+      <%= link_to "編集する", customers_information_edit_path, class: "btn d-flex align-items-center ms-3", style: "background-color: #D5CEA3; color: #1A120B" %>
+    </div>
   </div>
-  <div class="row">
-    <table class="table border border-secondary table-hover">
-      <tbody>
-        <tr>
-          <th class="table-secondary border border-secondary border-black border-bottom-1">氏名</th>
-          <td><%= @customer.full_name %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary border border-secondary">カナ</th>
-          <td><%= @customer.furigana_full_name %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary border border-secondary ">郵便番号</th>
-          <td><%= @customer.post_code %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary border border-secondary">住所</th>
-          <td><%= @customer.address %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary border border-secondary">電話番号</th>
-          <td><%= @customer.telephone_number %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary border border-secondary">メールアドレス</th>
-          <td><%= @customer.email %></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class='row'>
+    <div class="mt-3">
+      <table class="table table-bordered border-dark table-hover table-inverse custom-table">
+        <tbody>
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.full_name %></td>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <td><%= @customer.furigana_full_name %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.post_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="d-flex mb-2 justify-content-between align-items-center" style="width: 200px;">
-    <p class="mb-0">配送先</p>
-    <%= link_to "一覧を見る", shipping_addresses_path, :class => "btn btn-primary d-flex align-items-center ms-3" %>
-  </div>
-    <div class="d-flex justify-content-between align-items-center" style="width: 200px;">
-    <p class="mb-0">注文履歴</p>
-    <%= link_to "一覧を見る", orders_path, :class => "btn btn-primary d-flex align-items-center ms-3" %>
+    <div>
+      <div class="col-md-3 d-flex mt-3 mb-2 justify-content-between align-items-center">
+        <h5 class="mb-0">配送先</h5>
+        <%= link_to "一覧を見る", shipping_addresses_path, :class => "btn d-flex align-items-center ms-3", style: "background-color: #1A120B; color: #E5E5CB;"  %>
+      </div>
+        <div class="col-md-3 d-flex mt-3 justify-content-between align-items-center">
+        <h5 class="mb-0">注文履歴</h5>
+        <%= link_to "一覧を見る", orders_path, :class => "btn d-flex align-items-center ms-3", style: "background-color: #1A120B; color: #E5E5CB;"  %>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
