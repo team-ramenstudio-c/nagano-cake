@@ -6,6 +6,7 @@
   </div>
 
   <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="row mt-4 mx-auto">
       <table>
         <tbody>
