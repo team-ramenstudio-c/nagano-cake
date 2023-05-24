@@ -21,7 +21,7 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr id="cart_item">
-            <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+            <td class="align-middle"><%= l order.created_at.strftime('%Y/%m/%d') %></td>
             <td class="align-middle">
               〒<%= order.shipping_post_code %><br>
               <%= order.shipping_address %><br>

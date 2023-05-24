@@ -2,10 +2,10 @@
  <div class="col-md-10 mx-auto mt-5">
 
   <div class="row mb-5">
-    <h2>注文履歴詳細</h2>
+    <h4>注文履歴詳細</h4>
   </div>
 
-    <div class="col-md-8 d-flex justify-content-center mr-5">
+    <div class="col-md-9 d-flex justify-content-center mr-5">
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -62,12 +62,12 @@
     </div>
 
  <div class="row">
-   <div class="col-md-9 d-flex  mr-5">
+   <div class="col-md-9 d-flex">
      <table class="table mt-3">
       <thead class="table-light">
         <tr align="center">
           <th scope="col" style="width: 30%">商品名</th>
-          <th scope="col" style="width: 15%">単価（税込）</th>
+          <th scope="col" style="width: 15%">単価(税込)</th>
           <th scope="col" style="width: 10%">数量</th>
           <th scope="col" style="width: 15%">小計</th>
           <th scope="col" style="width: 20%">製作ステータス</th>
@@ -78,9 +78,9 @@
           <% @order_items.each do |order_item| %>
           <tr valign="middle">
           <td><%= order_item.item.name %></td>
-          <td align="center">&yen;<%= order_item.price_including_tax %></td>
+          <td align="center"><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
           <td align="center"><%= order_item.quantity %></td>
-          <td align="center">&yen;<%= order_item.subtotal %></td>
+          <td align="center"><%= order_item.subtotal.to_s(:delimited) %>円</td>
             <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
           <td><%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3" %></td>
           <td><%= f.submit "更新",class:"btn btn-success" %></td>
@@ -95,22 +95,22 @@
      <table class="table">
        <thead>
          <tr>
-           <th></th>
-           <th></th>
+           <th scope="col" style="width: 60%"></th>
+           <th scope="col" style="width: 40%"></th>
          </tr>
        </thead>
        <tbody class="table-light">
          <tr>
-           <td scope="col" style="width: 80%"><strong>商品合計</strong></td>
-           <td align="right">&yen;<%= @order.billing_amount%></td>
+           <td><strong>商品合計</strong></td>
+           <td align="right"><%= number_with_delimiter(@order.billing_amount - @order.postage) %>円</td>
          </tr>
           <tr>
-           <td scope="col" style="width: 20%"><strong>送料</strong></td>
-           <td align="right">&yen;<%= @order.postage %></td>
+           <td><strong>送料</strong></td>
+           <td align="right"><%= @order.postage.to_s(:billing_amount)%>円</td>
          </tr>
          <tr>
            <td><strong>請求金額合計</strong></td>
-           <td align="right">&yen;<%= @order.include_postage %></td>
+           <td align="right"><%= @order.billing_amount.to_s(:delimited)%>円</td>
          </tr>
        </tbody>
 

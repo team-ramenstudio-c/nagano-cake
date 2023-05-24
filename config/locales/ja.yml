@@ -19,8 +19,8 @@ ja:
   order_item:
    production_status:
     unable_to_start: "着手不可"
-    waiting_for_production: "制作待ち"
-    in_production: "制作中"
+    waiting_for_production: "製作待ち"
+    in_production: "製作中"
     completion_of_production: "制作完了"
 
   activerecord:
@@ -36,3 +36,4 @@ ja:
         telephone_number: 電話番号
         email: メールアドレス
         password: パスワード
+

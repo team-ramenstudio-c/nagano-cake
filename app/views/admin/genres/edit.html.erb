@@ -1,10 +1,11 @@
+<%= render"layouts/error_messages", model: @genre %>
 <div class= 'container'>
  <div class="col-md-10 mx-auto mt-5">
    <div class="row">
-  <h2>ジャンル編集</h2>
+  <h4>ジャンル編集</h4>
  </div>
 
-  <%= form_with model:@genre, url:admin_genre_path, method: :patch do |f| %>
+  <%= form_with model: @genre, url:admin_genre_path, method: :patch do |f| %>
  <div class="row d-flex mt-3">
 
   <div class="col-md-2 text-center">
