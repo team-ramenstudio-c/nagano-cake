@@ -4,7 +4,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-2" style="width: 200px;">
     <p class="mb-0">登録情報</p>
-    <%= link_to "編集する", customers_information_edit_path, :class => "btn btn-success d-flex align-items-center ms-3" %>
+    <%= link_to "編集する", customers_information_edit_path, :class => "btn d-flex align-items-center ms-3", style: "background-color: #1A120B; color: #E5E5CB;" %>
   </div>
   <div class="row">
     <table class="table border border-secondary table-hover">
@@ -38,10 +38,10 @@
   </div>
   <div class="d-flex mb-2 justify-content-between align-items-center" style="width: 200px;">
     <p class="mb-0">配送先</p>
-    <%= link_to "一覧を見る", shipping_addresses_path, :class => "btn btn-primary d-flex align-items-center ms-3" %>
+    <%= link_to "一覧を見る", shipping_addresses_path, :class => "btn d-flex align-items-center ms-3", style: "background-color: #1A120B; color: #E5E5CB;" %>
   </div>
     <div class="d-flex justify-content-between align-items-center" style="width: 200px;">
     <p class="mb-0">注文履歴</p>
-    <%= link_to "一覧を見る", orders_path, :class => "btn btn-primary d-flex align-items-center ms-3" %>
+    <%= link_to "一覧を見る", orders_path, :class => "btn d-flex align-items-center ms-3", style: "background-color: #1A120B; color: #E5E5CB;" %>
   </div>
 </div>
