@@ -5,7 +5,7 @@ class CartItem < ApplicationRecord
 
   #小計を求めるメソッド
   def subtotal
-    item.with_tax_price * quantity
+    self.price_including_tax * self.quantity
   end
 
 end
