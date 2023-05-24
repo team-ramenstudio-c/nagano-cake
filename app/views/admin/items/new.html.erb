@@ -1,60 +1,48 @@
+
 <div class="container">
   <div class="col-md-10 mx-auto mt-5">
-    <div class="row">
 
+    <div>
+    <h2 class="headline">商品新規登録</h2>
+    <%= render"layouts/error_messages", model: @item %>
+    </div>
 
-    <div class="form d-flex justify-content-center">
+    <div class="form d-flex justify-content-center" >
     <%= form_with model: @item, url:admin_items_path, method: :post do |f|  %>
 
-    <div class="row">
-    <h2>商品新規登録</h2>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :image,"商品画像",class:"col-4 col-form-label"%>
-    <div class="col-md-6">
-     <%= f.file_field :image,accept: "image/*" %>
-    </div>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :name,"商品名",class:"col-4 col-form-label"%>
-     <div class="col-md-6">
-     <%= f.text_field :name, autofocus: true, placeholder:"商品名",class:"form-control" %>
-    </div>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :description,"商品説明",class:"col-4 col-form-label"%>
-    <div class="col-md-6">
-     <%= f.text_area :description, placeholder:"ここに説明文を記述します",rows:"5",class:"form-control"%>
-    </div>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :genre_id,"ジャンル", class:"col-4 col-form-label" %>
-    <div class="col-md-6">
-     <%= f.collection_select :genre_id,Genre.all, :id, :name,include_blank: "--選択してください--"%>
-    </div>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :price_without_tax,"税抜価格",class:"col-4 col-form-label"%>
-    <div class="col-md-6">
-     <!--pattern: 入力制限-->
-     <%= f.text_field :price_without_tax, pattern:"^[1-9][0-9]*$", placeholder:"1000(半角数字を入力)",class:"form-control" %>
-    </div>
-    </div>
-
-    <div class="form-group row mt-3">
-     <%= f.label :is_on_sale,"販売ステータス",class:"col-4 col-form-label" %>
-    <div class="col-md-6">
+<table class="table mt-5">
+ <tbody>
+  <tr>
+   <td>商品画像</td>
+   <td><%= f.file_field :image,accept: "image/*" %></td>
+  </tr>
+  <tr>
+   <td>商品名</td>
+   <td><%= f.text_field :name, autofocus: true, placeholder:"商品名",class:"form-control" %></td>
+  </tr>
+  <tr>
+   <td>商品説明</td>
+   <td> <%= f.text_area :description, placeholder:"ここに説明文を記述します",rows:"5",class:"form-control"%></td>
+  </tr>
+  <tr>
+   <td>ジャンル</td>
+   <td><%= f.collection_select :genre_id,Genre.all, :id, :name,include_blank: "--選択してください--"%></td>
+  </tr>
+  <tr>
+   <td>税抜き価格</td>
+   <td><%= f.text_field :price_without_tax, pattern:"^[1-9][0-9]*$", placeholder:"1000(半角数字を入力)",class:"form-control" %></td>
+  </tr>
+  <tr>
+   <td>販売ステータス</td>
+   <td>
      <%= f.radio_button :is_on_sale, :true,class:"form-check-input" %>
      <%= f.label :is_on_sale, "販売中",class:"form-check-label" %>
      <%= f.radio_button :is_on_sale, :false,class:"form-check-input" %>
      <%= f.label :is_on_sale, "販売停止中",class:"form-check-label" %>
-    </div>
-    </div>
+   </td>
+  </tr>
+ </tbody>
+</table>
 
     <div class="raw text-center mt-3">
      <%= f.submit "新規登録", class:"btn w-25", style: "background-color: #1A120B; color: #E5E5CB;"%>
@@ -64,6 +52,6 @@
 
     <% end %>
 
-   </div>
+
   </div>
 </div>
