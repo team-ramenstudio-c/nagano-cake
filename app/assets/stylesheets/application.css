@@ -18,11 +18,37 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   font-family: 'Shippori Mincho', sans-serif;
+ }
+
+ header {
+   background-color: #3C2A21;
+   color: #E5E5CB;
  }
 
  main {
-    min-height: 100vh;
+   min-height: 100vh;
+   background-color: #E5E5CB;
+   color: #1A120B;
  }
+
+ .custom-table {
+   background-color: rgba(60, 42, 33, 0.5);
+ }
+
+ .custom-table th {
+  /*color: #E5E5CB;*/
+  width: 300px;
+}
+
+.custom-table tr td {
+  background-color: #E5E5CB;
+  border-color: #1A120B;
+}
+
+.rounded-image {
+  border-radius: 50%;
+}
 
  body {
   height: 100%;
@@ -33,6 +59,8 @@
  footer{
     width: 100%;
     margin-top: auto;
+    background-color: #1A120B;
+    color: #E5E5CB;
  }
 
 .fa-plus-circle{

@@ -1,40 +1,39 @@
-<div class= 'container'>
+<div class= 'container mt-5'>
   <div class='row'>
 
   <div class='login-flash-message'>
      <%= flash[:alert] %>
   </div>
 
-  <div class="col-md-8 mt-3 mx-auto p-3" style="background-color: #ffffe0; color: #696969;">
+  <div class="col-md-6 mx-auto p-3 rounded" style="background-color: #D5CEA3;">
     <h2 class="text-center">ログイン</h2>
     <p>会員の方はこちらからログイン</p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="form-group row mt-3">
-    <%= f.label :メールアドレス,class:"col-md-3 col-form-label" %>
-    <div class="col-md-8">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control" %>
+    <div class="form-group row mt-4 justify-content-center">
+      <%= f.label :メールアドレス,class:"col-md-3 col-form-label" %>
+      <div class="col-md-7">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row mt-3">
-    <%= f.label :パスワード,class:"col-md-3 col-form-label" %>
-    <div class="col-md-8">
-      <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+    <div class="form-group row mt-4 justify-content-center">
+      <%= f.label :パスワード,class:"col-md-3 col-form-label" %>
+      <div class="col-md-7">
+        <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="actions text-center mt-3">
-    <%= f.submit "ログイン", :class => "btn btn-sm btn-primary mt-1" %>
+    <div class="actions text-center mt-4 mb-2">
+     <%= f.submit "ログイン", :class => "btn btn-lg mt-1", style: "background-color: #1A120B; color: #E5E5CB;" %>
+    </div>
+    <% end %>
   </div>
-<% end %>
-
+  <div class="text-center mt-5">
+    <h2>会員登録がお済みでない方</h2>
+     <h5><%= link_to "こちら", new_registration_path(resource_name) , class: 'text-decoration-none' %>から新規登録を行なってください。</h5>
   </div>
-  <div class="text-center mt-3">
-  <h2>会員登録がお済みでない方</h2>
-   <%= link_to "こちら", new_registration_path(resource_name) , class: 'text-decoration-none' %>から新規登録を行なってください。
- </div>
  </div>
 </div>
 
