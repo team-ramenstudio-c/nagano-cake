@@ -1,6 +1,6 @@
-<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-<div class="card-header">ジャンル検索</div>
- <div class="card-body">
+<div class="card text-white mb-3" style="max-width: 18rem;">
+<div class="card-header" style="background-color: rgba(60, 42, 33, 0.5);">ジャンル検索</div>
+ <div class="card-body" style="background-color: #D5CEA3;">
   <% genres.each do |genre| %>
    <p><%= link_to "#{genre.name}", genre_search_path(genre), class: 'genre-search' %></p>
   <% end %>
