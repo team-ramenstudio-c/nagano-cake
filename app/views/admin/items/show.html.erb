@@ -1,8 +1,8 @@
 <div class="container">
   <div class="col-md-10 mx-auto mt-5">
 
-    <div class="row mb-5">
-    <h2>商品詳細</h2>
+    <div class="mb-5">
+    <h2 class="headline">商品詳細</h2>
     </div>
 
     <div class="row">
@@ -10,7 +10,7 @@
     <%= image_tag @item.get_image(300,200) %>
     </div>
 
-    <div class="col-md-5 d-flex justify-content-center mr-5">
+    <div class="col-md-6 d-flex justify-content-center mr-5" >
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -31,8 +31,8 @@
              (税抜価格)
          </td>
          <td valign="middle">
-             &yen;<%= @item.with_tax_price %>
-             (<%= @item.price_without_tax %>)
+             <%= @item.with_tax_price.to_s(:delimited) %>
+             (<%= @item.price_without_tax.to_s(:delimited)%>)円
          </td>
       <tr>
          <td>販売ステータス</td>

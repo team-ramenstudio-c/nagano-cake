@@ -7,7 +7,7 @@
        <h3><strong>商品一覧 (全<%= @items.count %>件)</strong></h3>
        <div class="row mt-4">
         <%= render 'index', items: @items %>
-        <div class="text-center"><%= paginate @items %></div>
+        <div class="d-flex justify-content-center mt-4"><%= paginate @items %></div>
        </div>
     </div>
   </div>
