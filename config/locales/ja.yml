@@ -24,6 +24,7 @@ ja:
     completion_of_production: "制作完了"
 
  activerecord:
+<<<<<<< HEAD
    models:
      item: 商品名
      genre: ジャンル名

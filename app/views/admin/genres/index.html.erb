@@ -34,7 +34,7 @@
         <% @genres.each do |genre|%>
         <tr>
         <td valign="middle"><%= genre.name%></td>
-        <td align="center"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
+        <td align="center"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm change_button", style: "background-color: #D5CEA3;" %></td>
         </tr>
         <% end %>
       </tbody>
