@@ -27,6 +27,7 @@ ja:
    models:
      item: 商品名
      genre: ジャンル名
+     shipping_address: 配送先
    attributes:
      item:
        name: 商品名
@@ -35,6 +36,11 @@ ja:
        genre: ジャンル名
      genre:
        name: ジャンル名
+     shipping_address:
+       postal_code: 郵便番号
+       address: 住所
+       name: 宛名
+
 
 
  views:
@@ -48,11 +54,3 @@ ja:
  time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-
-  models:
-    shipping_address: 配送先
-  attributes:
-    shipping_address:
-      postal_code: 郵便番号
-      address: 住所
-      name: 宛名
