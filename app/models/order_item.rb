@@ -1,6 +1,6 @@
 class OrderItem < ApplicationRecord
 
-#注文・商品とのアソシ
+ #注文・商品とのアソシ
   belongs_to :order
   belongs_to :item
 
@@ -13,5 +13,6 @@ class OrderItem < ApplicationRecord
   def subtotal
     self.price_including_tax * self.quantity
   end
+
 
 end
