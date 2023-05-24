@@ -23,17 +23,30 @@ ja:
     in_production: "製作中"
     completion_of_production: "制作完了"
 
-  activerecord:
-    attributes:
-    errors:
-      customer:
-        first_name: 性
-        last_name: 名
-        furigana_last_name: セイ
-        furigana_first_name: メイ
-        post_code: 郵便番号
-        address: 住所
-        telephone_number: 電話番号
-        email: メールアドレス
-        password: パスワード
+ activerecord:
+   models:
+     item: 商品名
+     genre: ジャンル名
+   attributes:
+     item:
+       name: 商品名
+       description: 商品説明
+       price_without_tax: 税抜金額
+       genre: ジャンル名
+     genre:
+       name: ジャンル名
+
+
+ views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
+
+ time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+
 

@@ -1,9 +1,9 @@
-<%= render"layouts/error_messages", model: @genre %>
-<div class= 'container'>
- <div class="col-md-10 mx-auto mt-5">
+<div class= 'container mt-5'>
+ <div class="col-md-10 mx-auto">
 
- <div class="row">
-  <h4>ジャンル一覧・追加</h4>
+ <div class="mb-5">
+  <h2 class="headline">ジャンル一覧・追加</h2>
+  <%= render"layouts/error_messages", model: @genre %>
  </div>
 
   <%= form_with model:@genre, url:admin_genres_path, method: :post do |f| %>
@@ -24,11 +24,10 @@
 
   <div class="row mt-5">
    <div class="col-md-5">
-    <table class="table">
-      <thead class="table-light">
+    <table class="table table-bordered border-dark table-hover align-middle custom-table">
+      <thead class>
         <tr align="center">
-        <th style="width: 15%">ジャンル</th>
-        <th style="width: 15%"></th>
+        <th colspan="2">ジャンル</th>
         </tr>
       </thead>
       <tbody>

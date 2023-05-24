@@ -1,16 +1,16 @@
-<div class= 'container'>
+<div class= 'container mt-5'>
  <div class="col-md-10 mx-auto mt-5">
 
-  <div class="row mb-3">
-    <h4>注文履歴一覧</h4>
+  <div class="mb-3">
+    <h2 class="headline">注文履歴一覧</h2>
   </div>
 
-    <table class ="table">
+    <table class ="table table-bordered border-dark table-hover align-middle custom-table">
       <thead>
-        <tr>
-         <th scope="col" style="width: 35%">購入日時</th>
-         <th scope="col" style="width: 20%">購入者</th>
-         <th scope="col" style="width: 20%">注文個数</th>
+        <tr align ="center">
+         <th scope="col" style="width: 30%">購入日時</th>
+         <th scope="col" style="width: 30%">購入者</th>
+         <th scope="col" style="width: 15%">注文個数</th>
          <th scope="col" style="width: 25%">注文ステータス</th>
         </tr>
       </thead>
@@ -19,11 +19,11 @@
         <tr>
          <td>
          <%=link_to admin_order_path(order.id) do%>
-         <%= order.created_at %>
+         <%= l order.created_at %>
          <% end %>
          </td>
          <td><%= order.shipping_name %></td>
-         <td><%= OrderItem.where(order_id: order.id).pluck(:quantity).sum %></td>
+         <td align="center"><%= OrderItem.where(order_id: order.id).pluck(:quantity).sum %></td>
          <!--enum日本語化-->
          <td><%= order.status_i18n%></td>
        </tr>
