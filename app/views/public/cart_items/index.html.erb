@@ -6,18 +6,22 @@
     </div>
    <% else %>
      <div class="col-md-10">
-      <div class="d-flex head-items mb-4">
-        <h4 class="col-md-4 bg-light text-center">ショッピングカート</h4>
-        <%= link_to 'カートを空にする',clear_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" }   %>
-       </div>
+      <div class="row justify-content-center head-items mb-4">
+        <h4 class="col-md-4 text-center headline">ショッピングカート</h4>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-md-2 mb-2">
+         <%= link_to 'カートを空にする',clear_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に空にしますか？" }   %>
+        </div>
+      </div>
       <table class="table table-hover table-inverse table-bordered custom-table", style="border-color: #3C2A21;">
         <thead>
           <tr align=center >
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
+            <th scope="col" style="width: 40%">商品名</th>
+            <th scope="col" style="width: 10%">単価（税込）</th>
+            <th scope="col" style="width: 20%">数量</th>
+            <th scope="col" style="width: 10%">小計</th>
+            <th scope="col" style="width: 10%"></th>
           </tr>
         </thead>
         <tbody>
@@ -45,9 +49,9 @@
       <div class="col-md-2">
        <table class="table table-hover table-inverse table-bordered", style="border-color: #3C2A21;">
          <tbody>
-           <tr>
+           <tr align="center">
              <th style="background-color: rgba(60, 42, 33, 0.5);">合計金額</th>
-             <td class="total-area">
+             <td class="total-area text-center">
                <%= render 'total', total_amount: @total_amount %>
               </td>
            </tr>
