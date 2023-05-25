@@ -5,11 +5,13 @@
      <%= flash[:alert] %>
   </div>
 
-  <div class="col-md-6 mx-auto p-3 rounded" style="background-color: #D5CEA3;">
-    <h2 class="text-center">ログイン</h2>
+  <div class="col-md-6 mx-auto" >
+    <h4 class="col-md-4 mx-auto headline mt-2 mb-4">ログイン</h4>
+    <div class="p-3 rounded " style="background-color: #D5CEA3;">
     <p>会員の方はこちらからログイン</p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 
     <div class="form-group row mt-4 justify-content-center">
       <%= f.label :メールアドレス,class:"col-md-3 col-form-label" %>
@@ -31,8 +33,9 @@
     <% end %>
   </div>
   <div class="text-center mt-5">
-    <h2>会員登録がお済みでない方</h2>
-     <h5><%= link_to "こちら", new_registration_path(resource_name) , class: 'text-decoration-none' %>から新規登録を行なってください。</h5>
+    <h4>会員登録がお済みでない方</h4>
+     <h6><%= link_to "こちら", new_registration_path(resource_name) , class:"login-link", style: "color: #1A120B;" %>から新規登録を行なってください。</h6>
+  </div>
   </div>
  </div>
 </div>
