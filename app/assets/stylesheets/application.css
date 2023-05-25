@@ -123,6 +123,7 @@
   color: #1A120B;
   text-decoration: none;
   font-size: 18px;
+  font-weight: bold;
 }
 
 
@@ -131,3 +132,15 @@
   text-decoration: underline;
 }
 
+.login-link {
+  color: #1A120B;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.login-link:hover {
+  color: #1A120B;
+  text-decoration: underline;
+}

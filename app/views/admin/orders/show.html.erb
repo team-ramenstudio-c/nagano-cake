@@ -19,11 +19,14 @@
       <tbody>
       <tr>
         <td>購入者</td>
-        <td><%= @order.customer.full_name %></td>
+        <td>
+          <%=link_to admin_customer_path(@order.customer.id),class:"admin_link" do%>
+            <%= @order.customer.full_name %>
+          <% end %>
       </tr>
       <tr>
-        <td>注文ID</td>
-        <td><%= @order.id %></td>
+        <td>注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
          <td>配送先</td>
          <td>
@@ -45,20 +48,6 @@
           <%= f.select :status, Order.statuses_i18n.invert%>
         　<%= f.submit "更新",class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;"%>
          <% end %>
-        </td>
-      </tr>
-      <tr>
-         <td>メールアドレス</td>
-         <td><%= @order.customer.email %></td>
-      </tr>
-      <tr>
-        <td>会員ステータス</td>
-         <td>
-          <% if @order.customer.is_deleted == true %>
-          <strong style="color:darkgray;"><%= "退会" %></strong>
-          <% else %>
-          <strong style="color:green;"><%= "有効" %></strong>
-          <% end %>
         </td>
       </tr>
      </tbody>
