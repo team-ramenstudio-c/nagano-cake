@@ -1,8 +1,10 @@
 <div class= 'container mt-5'>
  <div class="col-md-10 mx-auto mt-5">
 
-  <div class="mb-5">
-   <h2 class="headline">会員一覧</h2>
+  <div class="row justify-content-center mb-5">
+   <div class="col-md-4 headline">
+   <h4>会員一覧</h4>
+   </div>
   </div>
 
   <table class ="table table-bordered border-dark table-hover align-middle custom-table">
@@ -19,7 +21,7 @@
         <tr align="center">
         <td><%= customer.id %></td>
         <td>
-          <%= link_to admin_customer_path(customer.id) do%>
+          <%= link_to admin_customer_path(customer.id), class:"admin_link" do  %>
           <%= customer.full_name %>
           <% end %>
         </td>
