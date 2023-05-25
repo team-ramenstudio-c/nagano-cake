@@ -107,3 +107,17 @@
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
+
+
+.item-index {
+  color: #1A120B;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
+.item-index:hover {
+  color: #1A120B;
+  text-decoration: underline;
+}
+
