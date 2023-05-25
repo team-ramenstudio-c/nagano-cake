@@ -1,4 +1,8 @@
 # ながのケーキ チーム-ラーメンスタジオ
+<img width="1453" alt="スクリーンショット 2023-05-25 17 02 44" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/381dfc6b-a8cf-4fc9-a918-4a864ef3387d">
+
+<img width="1443" alt="スクリーンショット 2023-05-25 17 03 00" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/01228bdc-b5df-46e3-83dd-2c212522a148">
+
 
 ## 概要
 長野県にある洋菓子店「ながのCAKE」の商品の通販を想定した、ECサイトを開発。 <br>
@@ -24,7 +28,7 @@ InstagramのDMやメールで通販の注文を受けていたが、<br>
 ## 環境構築に必要な手順
 
 ```
-$ git clone git@github.com:teamb-tacobell/Nagano-cake.git
+$ git clone git@github.com:team-ramenstudio-c/nagano-cake.git
 $ cd Nagano-cake
 $ rails db:migrate
 $ rails db:seed
