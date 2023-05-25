@@ -118,3 +118,16 @@
   color: #1A120B;
   text-decoration: underline;
  }
+
+.item-index {
+  color: #1A120B;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
+.item-index:hover {
+  color: #1A120B;
+  text-decoration: underline;
+}
+

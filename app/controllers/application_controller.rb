@@ -9,7 +9,7 @@ before_action :authenticate_admin!, if: :admin_url
 
   def search
     @q = Item.ransack(params[:q])
-    @item = @q.result(distinct: true)
+    @items = @q.result(distinct: true)
     @result = params[:q]&.values&.reject(&:blank?)
   end
 end
