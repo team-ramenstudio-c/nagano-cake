@@ -67,22 +67,21 @@
 }
 
 .image {
-  border-radius: 20px;
-}
-
-.text {
-  padding: 10px;
-  color: #fff;
-  position: absolute;
-  font-size: 20px;
-  font-weight: bold;
-  top: 400px;
-  left: 500px;
-  background-color: rgba(26, 18, 11, 0.4);
   border-radius: 10px;
 }
 
-.text-center a.item-index:hover {
-  text-decoration: underline;
-}
+.text {
+  padding: 5px;
+  color: #fff;
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  top: 20px;
+  left: 520px;
+  background-color: rgba(26, 18, 11, 0.6);
+  border-radius: 10px;
 
+}
+.text p{
+  margin-bottom: 0;
+}
