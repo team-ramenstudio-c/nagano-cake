@@ -1,2 +1,58 @@
-<h1>Public::ShippingAddresses#index</h1>
-<p>Find me in app/views/public/shipping_addresses/index.html.erb</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-3 rounded" style="background-color: #D5CEA3;">
+    <h2>配送先登録/一覧</h2>
+<%= render "layouts/error_messages", model: @shipping_address %>
+    <div class="form-group row" >
+
+     <%= form_with model: @shipping_address, url: shipping_addresses_path, local: true do |f| %>
+
+        <div class="form-group mt-3 row">
+          <label class="col-md-3">郵便番号（ハイフンなし）</label>
+          <div class="col-md-3">
+            <%= f.text_field :postal_code, class:"form-control", placeholder: "0000000" %>
+          </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+          <label class="col-md-3">住所</label>
+          <div class="col-md-6">
+            <%= f.text_field :address , class:"form-control",placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+        </div>
+
+        <div class="form-group row mt-3" >
+          <label class="col-md-3">宛名</label>
+          <div class="col-md-9 d-flex justify-content-between">
+            <div class="col-md-4">
+              <%= f.text_field :name ,class:"form-control",placeholder: "長野景子" %>
+            </div>
+            <%= f.submit '新規登録', class:"btn" , style: "background-color: #1A120B; color: #E5E5CB;" %>
+          </div>
+      　</div>
+    <% end %>
+
+    <div class="row mx-auto mt-3">
+      <table class="table table-bordered border-dark table-hover align-middle custom-table">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shipping_addresses.each do |shipping_address| %>
+            <tr>
+              <td style="width: 10%"><%= shipping_address.postal_code %></td>
+              <td style="width: 40%"><%= shipping_address.address %></td>
+              <td style="width: 20%"><%= shipping_address.name %></td>
+              <td style="width: 30%"><%= link_to "編集する", edit_shipping_address_path(shipping_address.id), :class => "btn ms-3", style: "background-color: #1A120B; color: #E5E5CB;" %>
+              <%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :class => "btn btn-danger ms-3" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    </div>

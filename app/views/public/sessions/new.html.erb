@@ -1,26 +1,42 @@
-<h2>Log in</h2>
+<div class= 'container mt-5'>
+  <div class='row'>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class='login-flash-message'>
+     <%= flash[:alert] %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="col-md-6 mx-auto" >
+    <h4 class="col-md-4 mx-auto headline mt-2 mb-4">ログイン</h4>
+    <div class="p-3 rounded " style="background-color: #D5CEA3;">
+    <p>会員の方はこちらからログイン</p>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+    <div class="form-group row mt-4 justify-content-center">
+      <%= f.label :メールアドレス,class:"col-md-3 col-form-label" %>
+      <div class="col-md-7">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="form-group row mt-4 justify-content-center">
+      <%= f.label :パスワード,class:"col-md-3 col-form-label" %>
+      <div class="col-md-7">
+        <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="actions text-center mt-4 mb-2">
+     <%= f.submit "ログイン", :class => "btn btn-lg mt-1", style: "background-color: #1A120B; color: #E5E5CB;" %>
+    </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="text-center mt-5">
+    <h4>会員登録がお済みでない方</h4>
+     <h6><%= link_to "こちら", new_registration_path(resource_name) , class:"login-link", style: "color: #1A120B;" %>から新規登録を行なってください。</h6>
+  </div>
+  </div>
+ </div>
+</div>
 
-<%= render "public/shared/links" %>

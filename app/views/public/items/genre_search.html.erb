@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/homes/list_search', genres: @genres %>
+    </div>
+    <div class="col-md-10">
+      <h2 class="text-center">ジャンル名（<%= @genre.name %>）の一覧</h2>
+      <p  class="text-center mb-3"><strong><%= @items.count %>件</strong>の商品がヒットしました。</p>
+      <div class="row">
+       <%= render 'index', items: @items %>
+      </div>
+
+    </div>
+  </div>
+</div>

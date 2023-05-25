@@ -1,27 +1,56 @@
 ja:
+
  enums:
   order:
    payment_method:
     credit_card: "クレジットカード"
     transfer: "銀行振込"
-
-
 # ja:
 # enums:
-#   order:
+# order:
    status:
     waiting_for_payment: "入金待ち"
     confirmation_of_payment: "入金確認"
     in_production: "製作中"
     preparing_to_ship: "発送準備中"
     shipped: "発送済み"
-
-
 # ja:
 # enums:
   order_item:
    production_status:
     unable_to_start: "着手不可"
-    waiting_for_production: "制作待ち"
-    in_production: "制作中"
+    waiting_for_production: "製作待ち"
+    in_production: "製作中"
     completion_of_production: "制作完了"
+
+ activerecord:
+   models:
+     item: 商品名
+     genre: ジャンル名
+     shipping_address: 配送先
+   attributes:
+     item:
+       name: 商品名
+       description: 商品説明
+       price_without_tax: 税抜金額
+       genre: ジャンル名
+     genre:
+       name: ジャンル名
+     shipping_address:
+       postal_code: 郵便番号
+       address: 住所
+       name: 宛名
+
+
+
+ views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
+
+ time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

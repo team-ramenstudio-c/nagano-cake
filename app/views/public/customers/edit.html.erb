@@ -1,2 +1,69 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h4 class="col-md-4 mx-auto headline mb-4">会員情報編集</h4>
+        <div class="p-3 rounded" style="background-color: #D5CEA3;">
+      <%= form_with model: @customer, url:customers_information_path do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+
+      <div class="form-group row mt-3 justify-content-center">
+        <label class="col-md-2 col-form-label">氏名</label>
+        <div class="col-md-3">
+          <%= f.text_field :last_name , class:"col-md-2 form-control" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :first_name, class:"col-md-2 form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row mt-3 justify-content-center" >
+        <label class="col-md-2 col-form-label">フリガナ</label>
+        <div class="col-md-3">
+          <%= f.text_field :furigana_last_name , class:"form-control" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :furigana_first_name , class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group mt-3 row justify-content-center">
+        <label class="col-md-2 col-form-label">郵便番号</label>
+        <div class="col-md-6">
+          <%= f.text_field :post_code, class:"form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group mt-3 row justify-content-center">
+        <label class="col-md-2 col-form-label">住所</label>
+        <div class="col-md-6">
+          <%= f.text_field :address , class:" form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group mt-3 row justify-content-center">
+        <label class="col-md-2 col-form-label">電話番号</label>
+        <div class="col-md-6">
+          <%= f.text_field :telephone_number, class:" form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group mt-3 row justify-content-center">
+        <label class="col-md-2 col-form-label">メールアドレス</label>
+        <div class="col-md-6">
+          <%= f.text_field :email, class:" form-control" %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-around m-auto mt-2 mb-2">
+        <div class="form-group mt-3">
+          <%= f.submit '編集内容を保存', class: 'btn btn-lg', style: "background-color: #1A120B; color: #E5E5CB;" %>
+        </div>
+        <% end %>
+        <div class="align-items-center mt-3">
+          <%= link_to "退会する", customers_check_path, class: 'btn btn-lg btn-danger ' %>
+        </div>
+     </div>
+      </div>
+    </div>
+  </div>
+</div>
+

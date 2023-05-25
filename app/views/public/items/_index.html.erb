@@ -1,0 +1,15 @@
+<% items.each do |f| %>
+ <div class="col-md-3">
+  <div>
+    <p>
+      <%= link_to item_path(f) do %>
+       <div class="image-box">
+        <%= image_tag f.get_image(200,200), class: "image" %>
+       </div>
+      <% end %>
+    </p>
+    <p><strong><%= f.name %></strong>（<%= f.sale_status %>）</p>
+    <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
+  </div>
+ </div>
+<% end %>

@@ -1,2 +1,34 @@
-<h1>Public::ShippingAddresses#edit</h1>
-<p>Find me in app/views/public/shipping_addresses/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto p-3 rounded" style="background-color: #D5CEA3;">
+    <h2>配送先編集</h2>
+      <%= render "layouts/error_messages", model: @shipping_address %>
+
+    <%= form_with model: @shipping_address, url: shipping_address_path, method: :patch do |f| %>
+         <div class="form-group mt-3 row">
+              <label class="col-md-3">郵便番号（ハイフンなし）</label>
+              <div class="col-md-3">
+                <%= f.text_field :postal_code, class:"form-control"  %>
+              </div>
+            </div>
+
+            <div class="form-group mt-3 row">
+              <label class="col-md-3">住所</label>
+              <div class="col-md-6">
+                <%= f.text_field :address , class:"form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row mt-3" >
+              <label class="col-md-3">宛名</label>
+              <div class="col-md-9 d-flex justify-content-between">
+                <div class="col-md-4">
+                  <%= f.text_field :name ,class:"form-control" %>
+                </div>
+                <%= f.submit '変更内容を保存', class:"btn col-md-3", style: "background-color: #1A120B; color: #E5E5CB;" %>
+              </div>
+          　</div>
+        <% end %>
+       </div>
+    </div>
+  </div>

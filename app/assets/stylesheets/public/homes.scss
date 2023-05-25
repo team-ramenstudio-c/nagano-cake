@@ -1,3 +1,96 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.about {
+ flex-direction: column
+}
+
+.about h1 {
+  font-size: 70px;
+}
+
+.about p {
+  font-size: 16px;
+}
+
+.genre-search {
+  text-decoration: none;
+  color: #1A120B;
+}
+
+ .genre-search:hover {
+  color: #1A120B;
+  text-decoration: underline;
+ }
+
+.backimage-text {
+  padding-left: 20px;
+}
+
+.backimage {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  // background-color: lightgray;
+  // background-size: cover;
+  height: 30%;
+  width: 90%;
+  margin-left: 50px;
+  background-position: bottom
+
+}
+
+.backimage .image {
+  border-radius: 10px;
+  transition-duration: 0.5s;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  object-position: 110% 65%;
+}
+
+.backimage:hover .image{
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+
+.image-box {
+  transition-duration: 0.5s;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.image-box .image {
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.image-box:hover {
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.5s;
+}
+
+.image {
+  border-radius: 10px;
+}
+
+.text p{
+  padding: 5px;
+  color: #fff;
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  top: 200px;
+  left: 50px;
+  background-color: rgba(26, 18, 11, 0.3);
+  border-radius: 10px;
+  letter-spacing: 3px;
+  margin: 0;
+  line-height: 2;
+}
+.text p{
+  margin-bottom: 0;
+
+}

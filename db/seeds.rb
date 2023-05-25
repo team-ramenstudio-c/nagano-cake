@@ -15,7 +15,7 @@ Admin.create!(
 
 # Customer Data
 Customer.create!(
-  email: 'test@test.com',
+  email: 'test2@test.com',
   last_name: '長野',
   first_name: '景気',
   furigana_last_name: 'ナガノ',

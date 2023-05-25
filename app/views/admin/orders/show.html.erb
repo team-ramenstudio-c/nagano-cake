@@ -1,2 +1,115 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container mt-5">
+ <div class="col-md-10 mx-auto mt-5">
+
+  <div class="row justify-content-center mb-3">
+   <div class="col-md-4 headline">
+    <h4>注文履歴詳細</h4>
+   </div>
+  </div>
+
+    <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: rgba(213, 206, 163,0.4);">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 30%"></th>
+          <th scope="col" style="width: 55%"></th>
+          <th scope="col" style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>購入者</td>
+        <td>
+          <%=link_to admin_customer_path(@order.customer.id),class:"admin_link" do%>
+            <%= @order.customer.full_name %>
+          <% end %>
+      </tr>
+      <tr>
+        <td>注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+         <td>配送先</td>
+         <td>
+          〒<%= @order.shipping_post_code.to_s.insert(3, "-") %>
+          <%= @order.shipping_address%></br>
+          <%= @order.shipping_name%>
+         </td>
+
+      <tr>
+         <td>支払い方法</td>
+         <td><%= @order.payment_method_i18n %></td>
+      </tr>
+
+      <tr class="order_status">
+        <td>注文ステータス</td>
+
+        <td valign="middle">
+          <%= form_with model: @order ,url:admin_order_path(@order.id),local:true,method: :patch do |f|%>
+          <%= f.select :status, Order.statuses_i18n.invert%>
+        　<%= f.submit "更新",class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;"%>
+         <% end %>
+        </td>
+      </tr>
+     </tbody>
+    </table>
+
+    </div>
+
+ <div class="row mt-3">
+   <div class="col-md-9 d-flex">
+     <table class="table table-bordered border-dark table-hover align-middle custom-table">
+      <thead>
+        <tr align="center">
+          <th scope="col" style="width: 30%">商品名</th>
+          <th scope="col" style="width: 15%">単価(税込)</th>
+          <th scope="col" style="width: 10%">数量</th>
+          <th scope="col" style="width: 15%">小計</th>
+          <th scope="col" style="width: 25%">製作ステータス</th>
+        </tr>
+      </thead>
+      <tbody class ="production_status">
+          <% @order_items.each do |order_item| %>
+          <tr valign="middle">
+          <td><%= order_item.item.name %></td>
+          <td align="center"><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
+          <td align="center"><%= order_item.quantity %></td>
+          <td align="center"><%= order_item.subtotal.to_s(:delimited) %>円</td>
+
+          <td align="center">
+          <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
+          <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
+          <%= f.submit "更新",class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;" %>
+          <% end %>
+          </td>
+
+
+         </tr>
+         <% end %>
+     </tbody>
+    </table>
+    </div>
+
+ <div class="col-md-3">
+     <table class="table" style="background-color: rgba(213, 206, 163,0.4);">
+       <tbody>
+         <tr>
+           <td><strong>商品合計</strong></td>
+           <td align="right"><%= number_with_delimiter(@order.billing_amount - @order.postage) %>円</td>
+         </tr>
+          <tr>
+           <td><strong>送料</strong></td>
+           <td align="right"><%= @order.postage.to_s(:billing_amount)%>円</td>
+         </tr>
+         <tr>
+           <td><strong>請求金額合計</strong></td>
+           <td align="right"><%= @order.billing_amount.to_s(:delimited)%>円</td>
+         </tr>
+       </tbody>
+
+     </table>
+
+    </div>
+
+  </div>
+ </div>
+</div>

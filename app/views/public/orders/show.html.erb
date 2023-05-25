@@ -1,2 +1,81 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center order-new-title mt-5 mx-auto">
+    <div class="col-md-4 headline">
+      <h4>注文履歴詳細</h4>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4 mx-auto">
+     <div class="col-md-6">
+      <h5><strong>注文情報</strong></h5>
+      <table class="table table-hover table-inverse table-bordered", style="border-color: #3C2A21;">
+        <tbody>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">配送先</th>
+            <td class="align-middle">
+              〒<%= @order.shipping_post_code %><br>
+              <%= @order.shipping_address %><br>
+              <%= @order.shipping_name %>
+            </td>
+          </tr>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">支払方法</th>
+            <td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">ステータス</th>
+            <td><%= @order.status_i18n %></td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+     <div class="col-md-3">
+      <h5><strong>請求情報</strong></h5>
+      <table class="table table-hover table-inverse table-bordered", style="border-color: #3C2A21;">
+        <tbody>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">商品合計</th>
+            <td class="text-center"><%= number_with_delimiter(@order.billing_amount - @order.postage) %>円</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">配送料</th>
+            <td class="text-center"><%= @order.postage.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgba(60, 42, 33, 0.5);">ご請求額</th>
+            <td class="text-center"><%= @order.billing_amount.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+  </div>
+  <div class="row justify-content-center mx-auto mt-3">
+    <div class="col-md-9">
+     <h5><strong>注文内容</strong></h5>
+     <table class="table table-hover table-inverse table-bordered", style="border-color: #3C2A21;">
+        <thead style="background-color: rgba(60, 42, 33, 0.5);">
+           <tr align=center >
+            <th scope="col" style="width: 40%">商品</th>
+            <th scope="col" style="width: 20%">単価（税込）</th>
+            <th scope="col" style="width: 10%">個数</th>
+            <th scope="col" style="width: 20%">小計</th>
+           </tr>
+        </thead>
+        <tbody>
+          <% @order_items.each do |order_item| %>
+            <tr>
+              <td class="align-middle"><%= order_item.item.name %></td>
+              <td class="align-middle text-center"><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
+              <td class="align-middle text-center"><%= order_item.quantity %></td>
+              <td class="align-middle text-center"><%= order_item.subtotal.to_s(:delimited) %>円</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

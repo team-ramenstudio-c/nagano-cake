@@ -13,3 +13,134 @@
  *= require_tree .
  *= require_self
  */
+
+ *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Shippori Mincho', sans-serif;
+ }
+
+ header {
+   background-color: #3C2A21;
+   color: #E5E5CB;
+ }
+
+ .navbar-nav li:hover {
+  color: #E5E5CB;
+  text-decoration: underline;
+ }
+
+ main {
+   min-height: 100vh;
+   background-color: #E5E5CB;
+   color: #1A120B;
+ }
+
+ .custom-table {
+   background-color: rgba(60, 42, 33, 0.5);
+ }
+
+ .custom-table th {
+  /*color: #E5E5CB;*/
+  width: 300px;
+}
+
+.custom-table tr td {
+  background-color: #E5E5CB;
+  border-color: #1A120B;
+}
+
+.rounded-image {
+  border-radius: 50%;
+}
+
+ body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+ }
+
+ footer{
+    width: 100%;
+    margin-top: auto;
+    background-color: #1A120B;
+    color: #E5E5CB;
+ }
+
+.fa-plus-circle{
+   font-size: 1.8em;
+   color: #3C2A21;
+}
+
+.fa-plus-circle:hover {
+  opacity: .6;
+}
+
+.headline {
+  width: auto;
+  text-align: center;
+  background-color: #D5CEA3;
+  box-shadow: 0px 0px 0px 5px #D5CEA3;
+  border: dashed 2px #3C2A21;
+  padding: 0.2em 0.2em;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #E5E5CB;  /*文字の色を変える*/
+  background: #3C2A21;
+}
+
+.page-item {
+  margin-left: 0.4em;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #1A120B;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+
+.admin_link{
+    color: #1A120B;
+    text-decoration: none;
+}
+
+.admin_link:hover {
+  color: #1A120B;
+  text-decoration: underline;
+ }
+
+.item-index {
+  color: #1A120B;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.item-index:hover {
+  color: #1A120B;
+  text-decoration: underline;
+}
+
+.login-link {
+  color: #1A120B;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.login-link:hover {
+  color: #1A120B;
+  text-decoration: underline;
+}

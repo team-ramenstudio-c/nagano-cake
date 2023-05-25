@@ -1,2 +1,53 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="col-md-10 mx-auto mt-5">
+
+    <div class="row justify-content-center mb-5">
+    <div class="col-md-4 headline">
+     <h4>商品詳細</h4>
+    </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+
+    <div class="col-md-4 d-flex text-center justify-content-center align-items-center">
+    <%= image_tag @item.get_image(200,200) %>
+</div>
+    <div class="col-md-8 d-flex justify-content-center mr-5"  style="background-color: rgba(213, 206, 163,0.4);" >
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 25%"></th>
+          <th scope="col" style="width: 75%"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.description %></td>
+      </tr>
+         <td> 税込価格 </br>
+             (税抜価格)
+         </td>
+         <td valign="middle">
+             <%= @item.with_tax_price.to_s(:delimited) %>
+             (<%= @item.price_without_tax.to_s(:delimited)%>)円
+         </td>
+      <tr>
+         <td>販売ステータス</td>
+         <td><%= @item.sale_status %></td>
+      </tr>
+     </tbody>
+    </table>
+    </div>
+
+
+  </div>
+   <div class=" mt-3 text-center">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn w-25 mt-3 change_button", style: "background-color: #D5CEA3;" %>
+      </div>
+  </div>
+</div>
