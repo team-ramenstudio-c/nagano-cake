@@ -1,9 +1,13 @@
 <div class="container mt-5">
  <div class="col-md-10 mx-auto mt-5">
 
-    <h2 class="headline">注文履歴詳細</h2>
+  <div class="row justify-content-center mb-3">
+   <div class="col-md-4 headline">
+    <h4>注文履歴詳細</h4>
+   </div>
+  </div>
 
-    <div class="col-md-6 d-flex justify-content-center mt-3">
+    <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: rgba(213, 206, 163,0.4);">
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -35,10 +39,13 @@
 
       <tr class="order_status">
         <td>注文ステータス</td>
-         <%= form_with model: @order ,url:admin_order_path(@order.id),local:true,method: :patch do |f|%>
-        <td><%= f.select :status, Order.statuses_i18n.invert,{}, class: "form-select mr-3"%></td>
-        <td><%= f.submit "更新",class:"btn", style: "background-color: #1A120B; color: #E5E5CB;"%></td>
+
+        <td valign="middle">
+          <%= form_with model: @order ,url:admin_order_path(@order.id),local:true,method: :patch do |f|%>
+          <%= f.select :status, Order.statuses_i18n.invert%>
+        　<%= f.submit "更新",class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;"%>
          <% end %>
+        </td>
       </tr>
       <tr>
          <td>メールアドレス</td>
@@ -68,8 +75,7 @@
           <th scope="col" style="width: 15%">単価(税込)</th>
           <th scope="col" style="width: 10%">数量</th>
           <th scope="col" style="width: 15%">小計</th>
-          <th scope="col" style="width: 20%">製作ステータス</th>
-          <th scope="col" style="width: 5%"></th>
+          <th scope="col" style="width: 25%">製作ステータス</th>
         </tr>
       </thead>
       <tbody class ="production_status">
@@ -79,10 +85,15 @@
           <td align="center"><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
           <td align="center"><%= order_item.quantity %></td>
           <td align="center"><%= order_item.subtotal.to_s(:delimited) %>円</td>
-            <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
-          <td><%= f.select :production_status, OrderItem.production_statuses_i18n.invert,{}, class: "form-select mr-3" %></td>
-          <td><%= f.submit "更新",class:"btn", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
-         <% end %>
+
+          <td align="center">
+          <%= form_with model: order_item ,url:admin_order_item_path(order_item), local:true, method: :patch do |f| %>
+          <%= f.select :production_status, OrderItem.production_statuses_i18n.invert %>
+          <%= f.submit "更新",class:"btn btn-sm", style: "background-color: #1A120B; color: #E5E5CB;" %>
+          <% end %>
+          </td>
+
+
          </tr>
          <% end %>
      </tbody>
@@ -90,7 +101,7 @@
     </div>
 
  <div class="col-md-3">
-     <table class="table" style="background-color: #D5CEA3;">
+     <table class="table" style="background-color: rgba(213, 206, 163,0.4);">
        <tbody>
          <tr>
            <td><strong>商品合計</strong></td>

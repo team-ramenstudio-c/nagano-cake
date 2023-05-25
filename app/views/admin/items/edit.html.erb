@@ -1,17 +1,18 @@
-
+<%= render"layouts/error_messages", model: @item %>
 <div class="container">
   <div class="col-md-10 mx-auto mt-5">
   <div class="row">
 
-  <div>
-  <h2 class="headline">商品編集</h2>
-  <%= render"layouts/error_messages", model: @item %>
+  <div class="row justify-content-center mb-3">
+   <div class="col-md-4 headline">
+   <h4>商品編集</h4>
+   </div>
   </div>
 
   <div class="form d-flex justify-content-center">
   <%= form_with model: @item, url:admin_item_path, method: :patch do |f| %>
 
-  <table class="table mt-5">
+  <table class="table mt-3">
  <tbody>
   <tr>
    <td>商品画像</td>

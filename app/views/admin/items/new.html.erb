@@ -1,11 +1,12 @@
-
+ <%= render"layouts/error_messages", model: @item %>
 <div class="container">
   <div class="col-md-10 mx-auto mt-5">
 
-    <div>
-    <h2 class="headline">商品新規登録</h2>
-    <%= render"layouts/error_messages", model: @item %>
-    </div>
+  <div class="row justify-content-center mb-3">
+   <div class="col-md-4 headline">
+    <h4>商品新規登録</h4>
+   </div>
+  </div>
 
     <div class="form d-flex justify-content-center" >
     <%= form_with model: @item, url:admin_items_path, method: :post do |f|  %>
