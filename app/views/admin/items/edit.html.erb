@@ -30,7 +30,7 @@
    <td><%= f.collection_select :genre_id,Genre.all, :id, :name,{},include_blank: "--選択してください--",class:"form-select"%></td>
   </tr>
   <tr>
-   <td>税抜き価格</td>
+   <td>税抜価格</td>
    <td><%= f.text_field :price_without_tax, pattern:"^[1-9][0-9]*$", placeholder:"1000(半角数字を入力)",class:"form-control" %></td>
   </tr>
   <tr>

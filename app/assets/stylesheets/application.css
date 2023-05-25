@@ -107,3 +107,15 @@
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
+
+
+.admin_link{
+    font-weight: bold;
+    color: rgba(60, 42, 33, 0.5);
+    text-decoration: none;
+}
+
+.admin_link:hover {
+  color: rgba(60, 42, 33, 0.5);
+  text-decoration: underline;
+ }

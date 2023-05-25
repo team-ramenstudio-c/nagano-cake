@@ -4,7 +4,7 @@
 
  <h2 class="headline">商品一覧</h2>
 
-   <div class="d-flex justify-content-end mt-3 mb-3">
+   <div class="d-flex justify-content-end mt-3 mb-2">
   <%= link_to new_admin_item_path do %>
   <i class="fas fa-plus-circle"></i>
   <% end %>
@@ -25,7 +25,7 @@
         <tr>
         <td align="center"><%= item.id %></td>
         <td>
-          <%= link_to admin_item_path(item.id) do%>
+          <%= link_to admin_item_path(item.id),class:"admin_link" do%>
           <%= item.name %>
           <% end %>
         </td>

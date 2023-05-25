@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.page(params[:page])
+    @customers = Customer.order("created_at DESC").page(params[:page])
   end
 
   def show
@@ -10,7 +10,7 @@ class Admin::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
@@ -19,17 +19,17 @@ class Admin::CustomersController < ApplicationController
      render :edit
     end
   end
-  
+
   def order
      @customer = Customer.find(params[:id])
      @orders = @customer.orders.page(params[:page])
   end
-  
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:last_name,:first_name,:furigana_last_name,:furigana_first_name,
                                      :post_code,:address,:telephone_number,:email,:is_deleted)
   end
-  
+
 end
