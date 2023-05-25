@@ -110,12 +110,11 @@
 
 
 .admin_link{
-    font-weight: bold;
-    color: rgba(60, 42, 33, 0.5);
+    color: #1A120B;
     text-decoration: none;
 }
 
 .admin_link:hover {
-  color: rgba(60, 42, 33, 0.5);
+  color: #1A120B;
   text-decoration: underline;
  }
