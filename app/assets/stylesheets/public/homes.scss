@@ -15,8 +15,13 @@
 
 .genre-search {
   text-decoration: none;
-  color: gray;
+  color: #1A120B;
 }
+
+ .genre-search:hover {
+  color: #1A120B;
+  text-decoration: underline;
+ }
 
 .backimage-text {
   padding-left: 20px;
