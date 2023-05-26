@@ -26,9 +26,12 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = current_customer.cart_items.find(params[:id])
-    @cart_item.update(cart_item_params)
-    @cart_items = current_customer.cart_items.all
-    @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    if @cart_item.update(cart_item_params)
+      @cart_items = current_customer.cart_items.all
+      @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+      redirect_to request.referer
+      # render 'update'
+    end
   end
 
   def destroy
