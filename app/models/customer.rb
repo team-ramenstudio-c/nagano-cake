@@ -34,7 +34,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   def customer_status
     if is_deleted == true
       "退会"

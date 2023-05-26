@@ -1,12 +1,12 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-8 p-3 rounded" style="background-color: #D5CEA3;">
-    <h2>配送先登録/一覧</h2>
+    <div class="col-md-8">
+
+    <h4 class="col-md-4 mx-auto headline">配送先登録/一覧</h4>
 <%= render "layouts/error_messages", model: @shipping_address %>
-    <div class="form-group row" >
+    <div class="form-group row mt-3 p-3 rounded" style="background-color: #D5CEA3;" >
 
      <%= form_with model: @shipping_address, url: shipping_addresses_path, local: true do |f| %>
-
         <div class="form-group mt-3 row">
           <label class="col-md-3">郵便番号（ハイフンなし）</label>
           <div class="col-md-3">
@@ -31,7 +31,7 @@
           </div>
       　</div>
     <% end %>
-
+    </div>
     <div class="row mx-auto mt-3">
       <table class="table table-bordered border-dark table-hover align-middle custom-table">
         <thead>
@@ -54,5 +54,4 @@
           <% end %>
         </tbody>
       </table>
-    </div>
     </div>
