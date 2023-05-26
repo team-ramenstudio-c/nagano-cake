@@ -1,6 +1,0 @@
-<%= form_with(model: cart_item, url: cart_item_path(cart_item), method: :patch, local: false, class: "text-center") do |form| %>
-  <%= form.hidden_field :customer_id, :value => current_customer.id %>
-  <%= form.hidden_field :item_id, :value => cart_item.item.id %>
-  <%= form.select :quantity, *[1..50],{}, class: "form-select-sm" %>
-  <%= form.submit "変更", class: "btn change_button", style: "background-color: #D5CEA3;" %>
-<% end %>

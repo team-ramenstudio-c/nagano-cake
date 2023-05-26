@@ -44,15 +44,15 @@ class Public::OrdersController < ApplicationController
     end
       @address = "〒" + @order.shipping_post_code + @order.shipping_address
       session[:order] = @order.attributes
-      # session[:total_amount] = @total_amount
-      # session[:order_total_amount] = @order_total_amount
-  end
+    end
+
   if session[:order]
     @order = Order.new(session[:order])
     @cart_items = current_customer.cart_items
     @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.postage = 800
     @order_total_amount = @total_amount + @order.postage.to_i
+    @address = "〒" + @order.shipping_post_code + @order.shipping_address
   else
     @order = Order.new
   end
