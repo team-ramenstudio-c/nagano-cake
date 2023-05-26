@@ -7,7 +7,7 @@
 
   <div class="row justify-content-center mt-4 mx-auto ">
     <div class="col-md-6" style="background-color: #D5CEA3; border-radius: 10px;">
-      <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+      <%= form_with model: @order, url: confirm_orders_path, data: { turbolinks: false } ,method: :post do |f| %>
         <table class="table">
           <tbody>
             <tr>
