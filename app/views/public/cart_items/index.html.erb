@@ -26,7 +26,7 @@
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-            <tr id="cart_item">
+            <tr id="cart_item_<%= cart_item.id %>">
               <td class="align-middle"><%= image_tag cart_item.item.get_image(100, 100), class: "p-2 image" %> <%= cart_item.item.name %></td>
               <td class="align-middle text-center"><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
               <td id="select-form" class="align-middle">
@@ -34,10 +34,10 @@
                  <%= form.hidden_field :customer_id, :value => current_customer.id %>
                  <%= form.hidden_field :item_id, :value => cart_item.item.id %>
                  <%= form.select :quantity, *[1..50],{}, class: "form-select-sm" %>
-                 <%= form.submit "変更", class: "btn change_button", style: "background-color: #D5CEA3;" %>
+                 <%#= form.submit "変更", class: "btn change_button", style: "background-color: #D5CEA3;" %>
                <% end %>
               </td>
-              <td class="align-middle text-center">
+              <td class="align-middle subtotal-area text-center">
                 <%= render 'subtotal', cart_item: cart_item %>
               </td>
               <td class="align-middle text-center"><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" }   %></td>
@@ -56,7 +56,7 @@
          <tbody>
            <tr align="center">
              <th style="background-color: rgba(60, 42, 33, 0.5);">合計金額</th>
-             <td class="text-center">
+             <td class="text-center total-area">
                <%= render 'total', total_amount: @total_amount %>
               </td>
            </tr>
@@ -71,3 +71,27 @@
    <% end %>
   </div>
 </div>
+
+
+<!--下記は変更ボタンを押さなくてもselectで個数を選択すると自動で更新が発火されるコードです-->
+<script>
+  $(document).on("change", "#select-form select", function() {
+    let form = $(this).closest("form");
+    let url = form.attr("action");
+    let method = form.attr("method");
+    let data = form.serialize();
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data,
+      success: function(response) {
+        let cartItemRow = form.closest("tr#cart_item");
+        cartItemRow.find(".subtotal-area").html(response);
+      },
+      error: function(xhr) {
+        console.log(xhr.responseText);
+      }
+    });
+  });
+</script>
