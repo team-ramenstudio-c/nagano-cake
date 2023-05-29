@@ -1,8 +1,7 @@
-# ながのケーキ チーム-ラーメンスタジオ
-<img width="1453" alt="スクリーンショット 2023-05-25 17 02 44" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/381dfc6b-a8cf-4fc9-a918-4a864ef3387d">
+# チーム開発　Nagano Cake
 
-<img width="1443" alt="スクリーンショット 2023-05-25 17 03 00" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/01228bdc-b5df-46e3-83dd-2c212522a148">
-
+<img width="2388" alt="スクリーンショット 2023-05-29 12 42 01" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/d1d7ca9b-caf2-4a29-8c1a-acef42b46d4b">
+<img width="2381" alt="スクリーンショット 2023-05-29 12 42 52" src="https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/eb0902af-94e0-4692-b648-c5050998f1c9">
 
 ## 概要
 長野県にある洋菓子店「ながのCAKE」の商品の通販を想定した、ECサイトを開発。 <br>
@@ -15,9 +14,9 @@ https://colorhunt.co/palette/1a120b3c2a21d5cea3e5e5cb
 
 ### ◆案件の背景
 元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るよう
-になった。<br>
-InstagramのDMやメールで通販の注文を受けていたが、<br>
-情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
+になりました。<br>
+InstagramのDMやメールで通販の注文を受けていましたが、<br>
+情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至りました。
 
 ## 言語とフレームワークのバージョン
 
@@ -25,17 +24,7 @@ InstagramのDMやメールで通販の注文を受けていたが、<br>
 - Rails 6.1.7.3
 - Bootstrap v5.2.3
 
-## 環境構築に必要な手順
-
-```
-$ git clone git@github.com:team-ramenstudio-c/nagano-cake.git
-$ cd Nagano-cake
-$ rails db:migrate
-$ rails db:seed
-$ yarn install
-$ bundle install
-```
-### 使用したGem
+**使用したGem**
 
 ```
 gem 'devise'
@@ -49,34 +38,46 @@ gem 'jquery-rails'
 ```
 
 ## 実装した機能
-- ### 顧客側
+**顧客側**
 - 会員登録、ログイン・ログアウト、退会
 - 会員情報の編集
 - カートへの追加、商品購入
 - 支払い方法、配送先の指定
 - 注文履歴の閲覧
 
-- ### 管理者側
+**管理者側**
 - 商品の新規追加、編集、閲覧
 - 商品情報の編集
 - 会員登録されているユーザ情報の閲覧、編集、退会処理
 - ユーザの注文履歴閲覧
 
-- ### その他
+**その他**
 - 商品検索機能
 - 商品ジャンルごとの商品検索機能
 
-## 設計書
-- ER図
-- テーブル定義書
-- アプリケーション詳細設計書
-
 ## 使用方法
-- 管理者ページのログイン
-初期段階での管理者ページのログインに必要なメールアドレス及びパスワードは下記の通りです。
 
-- メールアドレス：test@test.com
-- パスワード:testtest
+```
+$ git clone git@github.com:team-ramenstudio-c/nagano-cake.git
+$ cd Nagano-cake
+$ rails db:migrate
+$ rails db:seed
+$ yarn install
+$ bundle install
+$ rails s
+```
+
+管理者ページのログイン（/admin/sign_in)
+初期段階での管理者ページのログインに必要なメールアドレス及びパスワードは下記の通りです。
+URLの後ろに/admin/sign_inをつけてください。
+
+メールアドレス：test@test.com
+パスワード:testtest
+
+## 設計書
+- [ER図](https://github.com/team-ramenstudio-c/nagano-cake/assets/86299044/722a2cb6-2d11-41da-ae81-1ccc377f5fcf)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/14ydag-ZF5-lI51DYTR86jJFRu0yMSU-GWmFq0gz2HQc/edit#gid=650985916)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/12Ll08rQX-DVHskNDmFWJZ8qjozNtLnNuzEliS2GerX8/edit#gid=549108681)
 
 ## 作成者アカウント
 個人GitHubへのリンク
